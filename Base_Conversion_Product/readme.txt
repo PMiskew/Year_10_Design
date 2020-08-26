@@ -1,0 +1,1 @@
+This program is used for a lesson in DP Computer Science.  It does include some more advanced algorithm techniques, but also has many of the core skills that are explored in the year 9 and year 10 design, coding option course. 
