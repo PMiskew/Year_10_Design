@@ -1,0 +1,84 @@
+<!--
+In thie partially completed version I used a form to take the input.  However, this 
+presents a problem in that when a form is submitted the page is reloaded and as a 
+result we lose the update that we want.
+
+FIX: In the actual product we removed the form
+
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Piano Scale Helper
+	</title>
+
+	<style>
+
+		legend {
+    		background-color: #000;
+    		color: #fff;
+    		padding: 3px 6px;
+		}
+
+	</style>
+</head>
+<body>
+
+
+	<form onsubmit = "calculate()">
+		<fieldset>
+		<legend>Piano Scale Generator</legend>
+		<p>
+
+			<label>Select Scale</label>
+
+			<select id = "scale_type">
+
+				<option value = "1">Major</option>
+				<option value = "2">Minor</option>
+
+			</select>
+			<br/>
+			<br/>
+			<label>Select Key</label>
+			<select id = "scale_key">
+
+				<option value = "1">A</option>
+				<option value = "2">A#</option>
+				<option value = "3">B</option>
+				<option value = "4">C</option>
+				<option value = "5">C#</option>
+				<option value = "6">D</option>
+				<option value = "7">D#</option>
+				<option value = "8">E</option>
+				<option value = "9">F</option>
+				<option value = "10">F#</option>
+				<option value = "11">G</option>
+				<option value = "12">G#</option>
+
+				</select>
+			<br />
+			<br />
+			<input type="submit">
+		</p>
+		</fieldset>
+	</form>
+
+
+<script>
+
+
+	
+	
+	function calculate() {
+		//The alert works, but I can't display anything to console or update page. 
+		var e = document.getElementById("scale_type");
+		var s_type = e.options[e.selectedIndex].value;
+		alert(s_type)
+
+	}
+
+</script>
+</body>
+</html>
