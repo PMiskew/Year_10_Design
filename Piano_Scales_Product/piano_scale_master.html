@@ -15,6 +15,8 @@
 
 	
 	</style>
+
+
 </head>
 <body>
 
@@ -67,6 +69,8 @@
 
 <script>
 
+  //**********This section draws the piano keys**********
+  //gets canvas widget
   var c = document.getElementById("keyCanvas");
   var ctx = c.getContext("2d");
   
@@ -161,12 +165,18 @@
 
   */
 
-
+  //The list notes is used when calculating the resulting scale
 	notes = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#","A","A#","B","C","C#","D","D#","E","F","F#","G","G#"];
 
 
+  /*
+  Calucate is invoked when the user presses hte submit button
+  and calcuates and updates the display with the scale in the 
+  indicated key. 
+  */
 	function calculate() {
 	
+    
 		var s_select = document.getElementById("scale_type");
 		var s_type = s_select.options[s_select.selectedIndex].value;
 
@@ -186,11 +196,10 @@
     //Canvas Update
     clearMarks();
     
-    //Display root
-    ctx.beginPath();
-    ctx.fillStyle = "white";
-    ctx.rect(10,110,300,20)
-    ctx.fill();
+    //Display root key
+
+ 
+    
 
     //Update keyboard
     ctx.beginPath();

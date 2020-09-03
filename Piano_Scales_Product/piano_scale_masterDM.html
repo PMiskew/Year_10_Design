@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Piano Scale Helper
+	</title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+          
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+</head>
+<body>
+
+  <div style = "padding: 10px">
+     <p class="flow-text white-text black">Piano Scale Generators</p>
+
+   
+   <h5>Select Scale</h5>
+
+    <select id = "scale_type">
+     
+     <option value = "1">Major</option>
+     <option value = "2">Minor</option>
+
+    </select>
+ 
+    <h5>Select Key</h5>
+    <select id = "scale_key">
+
+      <option value = "0">A</option>
+      <option value = "1">A#</option>
+      <option value = "2">B</option>
+      <option value = "3">C</option>
+      <option value = "4">C#</option>
+      <option value = "5">D</option>
+      <option value = "6">D#</option>
+      <option value = "7">E</option>
+      <option value = "8">F</option>
+      <option value = "9">F#</option>
+      <option value = "10">G</option>
+      <option value = "11">G#</option>
+
+    </select>
+    <br />
+    <br />
+    <input type="submit" onclick = "calculate();">
+
+  
+  <br />
+  <div id = "output">
+    <canvas id="keyCanvas" width="310" height="130" style="border:1px solid #000000;">
+    
+
+
+    </canvas>
+  </div>
+
+
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+
+</script>
+</body>
+</html>
