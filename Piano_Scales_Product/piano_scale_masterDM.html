@@ -26,7 +26,7 @@
    
    <h5>Select Scale</h5>
 
-    <select id = "scale_type">
+    <select id = "scale_type" onchange = "display_update()">
      
      <option value = "1">Major</option>
      <option value = "2">Minor</option>
@@ -34,7 +34,7 @@
     </select>
  
     <h5>Select Key</h5>
-    <select id = "scale_key">
+    <select id = "scale_key" onchange = "display_update()">
 
       <option value = "0">A</option>
       <option value = "1">A#</option>
@@ -50,18 +50,8 @@
       <option value = "11">G#</option>
 
     </select>
-    <br />
-    <br />
-    <input type="submit" onclick = "calculate();">
-
-  
-  <br />
-  <div id = "output">
-    <canvas id="keyCanvas" width="310" height="130" style="border:1px solid #000000;">
-    
-
-
-    </canvas>
+ 
+  <img id = "image" src="images/keys_blank.jpg" alt="Girl in a jacket" style = "width: 100%">
   </div>
 
 
@@ -69,10 +59,42 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, options);
-  });
+
+  function display_update() {
+    
+    var s_select = document.getElementById("scale_type");
+    var s_type = s_select.options[s_select.selectedIndex].value;
+
+    var n_select = document.getElementById("scale_key");
+    var n_type = n_select.options[n_select.selectedIndex].value;
+
+    console.log(s_type,n_type)
+    //Order based on circle of 5th
+    //C Major - a minor
+    if ((s_type === "1" && n_type === "3") || (s_type === "2" && n_type === "0")){
+      document.getElementById("image").src = "images/keys_CM_Am.jpg"
+    }
+    else if ((s_type === "1" && n_type === "10") || (s_type === "2" && n_type === "7")) {
+      document.getElementById("image").src = "images/keys_GM_Em.jpg"
+
+    }
+    else if ((s_type === "1" && n_type === "5") || (s_type === "2" && n_type === "2")) {
+      document.getElementById("image").src = "images/keys_DM_bm.jpg"
+
+    }
+    else if ((s_type === "1" && n_type === "0") || (s_type === "2" && n_type === "9")) {
+      document.getElementById("image").src = "images/keys_AM_fsm.jpg"
+
+    }
+    else {
+
+      document.getElementById("image").src = "images/keys_blank.jpg"
+
+    }
+
+    console.log("changing")
+  }
+
 
   // Or with jQuery
 
