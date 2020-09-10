@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Piano Scale Generator</title>
+  <title>Piano Scale Generator</title>
 
-	<style>
-		#title {
-			background-color: #000;
-			color: #fff;
-			padding: 3px 6px;
-		}
-	</style>
+  <style>
+    #title {
+      background-color: #000;
+      color: #fff;
+      padding: 3px 6px;
+    }
+  </style>
 
 
 </head>
 <body>
 
-	<p id = "title">Piano Scale Generator</p>
-	<br/>
+  <p id = "title">Piano Scale Generator</p>
+  <br/>
 
-	<label>Select Scale</label>
-	<select id = "scale_select">
-		<option value = "1">Major</option>
-		<option value = "2">Minor</option>
-	</select>
+  <label>Select Scale</label>
+  <select id = "scale_select">
+    <option value = "1">Major</option>
+    <option value = "2">Minor</option>
+  </select>
 
-	<br/>
-	<br/>
-	<label>Select Key</label>
-	<select id = "scale_key">
+  <br/>
+  <br/>
+  <label>Select Key</label>
+  <select id = "scale_key">
       <option value = "0">A</option>
       <option value = "1">A#</option>
       <option value = "2">B</option>
@@ -40,20 +40,20 @@
       <option value = "9">F#</option>
       <option value = "10">G</option>
       <option value = "11">G#</option>
-	</select>
-	<br/>
-	<br/>
-	<input type = "submit">
-	<br/>
-	
-	<canvas id="keyCanvas" width="310" height="130" style="border:1px solid #000000;">
+  </select>
+  <br/>
+  <br/>
+  <input type = "submit" onclick = "calculate();">
+  <br/>
+  
+  <canvas id="keyCanvas" width="310" height="130" style="border:1px solid #000000;">
 
-	</canvas>
+  </canvas>
 
 
 <script>
-
-	  //**********This section draws the piano keys**********
+    console.log("Running")
+    //**********This section draws the piano keys**********
   //gets canvas widget
   var c = document.getElementById("keyCanvas");
   var ctx = c.getContext("2d");
@@ -104,7 +104,16 @@
   ctx.fillText("C", 145 + 6, 120);
   ctx.fillText("C", 285 + 6, 120);
 
+  function calculate() {
+    console.log("Calculating");
+    var s_select = document.getElementById("scale_select")
+    var s_type = s_select.options[s_select.selectedIndex].value;
+    //console.log(s_type)
+    var n_select = document.getElementById("scale_key")
+    var n_type = n_select.options[n_select.selectedIndex].value;
+    console.log(n_type)
 
+  }
 </script>
 
 

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Piano Scale Generator</title>
+
+  <style>
+    #title {
+      background-color: #000;
+      color: #fff;
+      padding: 3px 6px;
+    }
+  </style>
+
+
+</head>
+<body>
+
+  <p id = "title">Piano Scale Generator</p>
+  <br/>
+
+  <label>Select Scale</label>
+  <select id = "scale_select">
+    <option value = "1">Major</option>
+    <option value = "2">Minor</option>
+  </select>
+
+  <br/>
+  <br/>
+  <label>Select Key</label>
+  <select id = "scale_key">
+      <option value = "0">A</option>
+      <option value = "1">A#</option>
+      <option value = "2">B</option>
+      <option value = "3">C</option>
+      <option value = "4">C#</option>
+      <option value = "5">D</option>
+      <option value = "6">D#</option>
+      <option value = "7">E</option>
+      <option value = "8">F</option>
+      <option value = "9">F#</option>
+      <option value = "10">G</option>
+      <option value = "11">G#</option>
+  </select>
+  <br/>
+  <br/>
+  <input type = "submit" onclick = "calculate();">
+  <br/>
+  
+  <canvas id="keyCanvas" width="310" height="130" style="border:1px solid #000000;">
+
+  </canvas>
+
+
+<script>
+    console.log("Running")
+    //**********This section draws the piano keys**********
+  //gets canvas widget
+  var c = document.getElementById("keyCanvas");
+  var ctx = c.getContext("2d");
+  
+
+  //white keys
+  ctx.beginPath();
+  ctx.rect(5, 5, 20,100);
+  ctx.rect(25, 5, 20,100);
+  ctx.rect(45, 5, 20,100);
+  ctx.rect(65, 5, 20,100);
+  ctx.rect(85, 5, 20,100);
+  ctx.rect(105, 5, 20,100);
+  ctx.rect(125, 5, 20,100);
+  ctx.rect(145, 5, 20,100);
+  ctx.rect(165, 5, 20,100);
+  ctx.rect(185, 5, 20,100);
+  ctx.rect(205, 5, 20,100);
+  ctx.rect(225, 5, 20,100);
+  ctx.rect(245, 5, 20,100);
+  ctx.rect(265, 5, 20,100);
+  ctx.rect(285, 5, 20,100);
+  ctx.stroke()
+
+  //black keys
+  ctx.beginPath();
+  ctx.fillStyle = "black";
+  
+  ctx.rect(20, 5, 10,50); //black
+  ctx.rect(40, 5, 10,50); //black
+
+  ctx.rect(80, 5, 10,50); //black
+  ctx.rect(100, 5, 10,50); //black
+  ctx.rect(120, 5, 10,50); //black
+
+  ctx.rect(160, 5, 10,50); //black 
+  ctx.rect(180, 5, 10,50); //black
+
+  ctx.rect(220, 5, 10,50); //black
+  ctx.rect(240, 5, 10,50); //black
+  ctx.rect(260, 5, 10,50); //black
+
+  ctx.rect(300, 5, 5,50); //black
+
+  ctx.fill();
+
+  ctx.fillText("C", 12, 120);
+  ctx.fillText("C", 145 + 6, 120);
+  ctx.fillText("C", 285 + 6, 120);
+
+
+  ctx.beginPath();
+  ctx.fillStyle = "orange";
+  //white - orange marks
+  ctx.rect(10,90,10,10)
+  ctx.rect(30,90,10,10)
+  ctx.rect(50,90,10,10)
+  ctx.rect(70,90,10,10)
+  ctx.rect(90,90,10,10)
+  ctx.rect(110,90,10,10)
+  ctx.rect(130,90,10,10)
+  ctx.rect(150,90,10,10)
+  ctx.rect(170,90,10,10)
+  ctx.rect(190,90,10,10)
+  ctx.rect(210,90,10,10)
+  ctx.rect(230,90,10,10)
+  ctx.rect(250,90,10,10)
+  ctx.rect(270,90,10,10)
+  ctx.rect(290,90,10,10)
+        
+  //black - orange marks
+  ctx.rect(22,45,6,6)
+  ctx.rect(42,45,6,6)
+  ctx.rect(82,45,6,6)
+  ctx.rect(102,45,6,6)
+  ctx.rect(122,45,6,6)
+  ctx.rect(162,45,6,6)
+  ctx.rect(182,45,6,6)
+  
+  ctx.rect(222,45,6,6)
+  ctx.rect(242,45,6,6)
+  ctx.rect(262,45,6,6)
+  ctx.fill()
+
+  notes = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#","A","A#","B","C","C#","D","D#","E","F","F#","G","G#"];
+
+
+  function calculate() {
+
+    clearMarks();
+
+    console.log("Calculating");
+    var s_select = document.getElementById("scale_select")
+    var s_type = s_select.options[s_select.selectedIndex].value;
+    //console.log(s_type)
+    var n_select = document.getElementById("scale_key")
+    var n_type = n_select.options[n_select.selectedIndex].value;
+    n_type = parseInt(n_type) //casting
+    // "1" --> 1
+    console.log(n_type)
+
+    //Assuming Major
+    result = [notes[n_type],notes[n_type + 2],notes[n_type + 4],notes[n_type + 5],notes[n_type + 7],notes[n_type + 9],notes[n_type+11],notes[n_type+12]]
+
+    if (s_type === "2") {
+      result = [notes[n_type],notes[n_type + 2],notes[n_type + 3],notes[n_type + 5],notes[n_type + 7],notes[n_type + 8],notes[n_type+10],notes[n_type+12]]
+    }
+
+    console.log(result)
+
+    
+
+
+
+  }
+
+  function clearMarks() {
+
+    ctx.beginPath();
+    ctx.fillStyle = "white"
+
+    ctx.rect(10,90,10,10)
+    ctx.rect(30,90,10,10)
+    ctx.rect(50,90,10,10)
+    ctx.rect(70,90,10,10)
+    ctx.rect(90,90,10,10)
+    ctx.rect(110,90,10,10)
+    ctx.rect(130,90,10,10)
+    ctx.rect(150,90,10,10)
+    ctx.rect(170,90,10,10)
+    ctx.rect(190,90,10,10)
+    ctx.rect(210,90,10,10)
+    ctx.rect(230,90,10,10)
+    ctx.rect(250,90,10,10)
+    ctx.rect(270,90,10,10)
+    ctx.rect(290,90,10,10)
+    ctx.fill()
+
+    ctx.beginPath();
+    ctx.fillStyle = "black";
+    ctx.rect(22,45,6,6)
+    ctx.rect(42,45,6,6)
+    ctx.rect(82,45,6,6)
+    ctx.rect(102,45,6,6)
+    ctx.rect(122,45,6,6)
+    ctx.rect(162,45,6,6)
+    ctx.rect(182,45,6,6)
+
+    ctx.rect(222,45,6,6)
+    ctx.rect(242,45,6,6)
+    ctx.rect(262,45,6,6)
+    ctx.fill()
+    
+
+
+
+
+  }
+</script>
+
+
+</body>
+</html>
