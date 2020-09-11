@@ -8,15 +8,24 @@ def isEven(a):
 		return True
 
 	return False
-
+######################################
 '''
 Codingbat Problem
 '''
 def missing_char(str, n):
 	
 	return str[0:n] + str[n + 1:len(str)]
+ 
+###################################### 
+def first_last6(nums):
   
   
+  if (nums[0] == 6 or nums[len(nums) - 1] == 6):
+    return True
+  
+  return False
+  
+#######################################
 '''
 This function takes a single positive integer parameter and returns
 the sum of the digits
