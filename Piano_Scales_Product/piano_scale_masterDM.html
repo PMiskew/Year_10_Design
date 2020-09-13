@@ -60,6 +60,11 @@
     
 <script>
 
+  //Initalize page to C
+  document.getElementById("image").src = "images/keys_CM_Am.jpg"
+  var n_select = document.getElementById("scale_key");
+  n_select.value = "3";
+
   function display_update() {
     
     var s_select = document.getElementById("scale_type");
@@ -70,27 +75,67 @@
 
     console.log(s_type,n_type)
     //Order based on circle of 5th
-    //C Major - a minor
+    //CM,am
     if ((s_type === "1" && n_type === "3") || (s_type === "2" && n_type === "0")){
       document.getElementById("image").src = "images/keys_CM_Am.jpg"
     }
+    //GM,em
     else if ((s_type === "1" && n_type === "10") || (s_type === "2" && n_type === "7")) {
       document.getElementById("image").src = "images/keys_GM_Em.jpg"
 
     }
+    //DM,bm
     else if ((s_type === "1" && n_type === "5") || (s_type === "2" && n_type === "2")) {
       document.getElementById("image").src = "images/keys_DM_bm.jpg"
 
     }
+    //AM,fsm
     else if ((s_type === "1" && n_type === "0") || (s_type === "2" && n_type === "9")) {
       document.getElementById("image").src = "images/keys_AM_fsm.jpg"
 
     }
-    else {
+    //EM,Csm
+    else if ((s_type === "1" && n_type === "7") || (s_type === "2" && n_type === "4")) {
 
-      document.getElementById("image").src = "images/keys_blank.jpg"
+      document.getElementById("image").src = "images/keys_EM_csm.jpg"
 
     }
+    //BM, Gsm
+    else if ((s_type === "1" && n_type === "2") || (s_type === "2" && n_type === "11")) {
+
+      document.getElementById("image").src = "images/keys_BM_Gsm.jpg"
+
+    }
+    //FsM,Dsm
+    else if ((s_type === "1" && n_type === "4") || (s_type === "2" && n_type === "6")) {
+
+      document.getElementById("image").src = "images/keys_FsM_Dsm.jpg"
+
+    }
+    //GsM,Fm
+    else if ((s_type === "1" && n_type === "11") || (s_type === "2" && n_type === "8")) {
+
+      document.getElementById("image").src = "images/keys_GsM_Fm.jpg"
+
+    }
+    //DsM,Cm
+    else if ((s_type === "1" && n_type === "6") || (s_type === "2" && n_type === "3")) {
+
+      document.getElementById("image").src = "images/keys_DsM_Cm.jpg"
+
+    }
+    //AsM,Gm
+    else if ((s_type === "1" && n_type === "1") || (s_type === "2" && n_type === "10")) {
+
+      document.getElementById("image").src = "images/keys_AsM_Gm.jpg"
+
+    }
+    else if ((s_type === "1" && n_type === "8") || (s_type === "2" && n_type === 5)) {
+
+      document.getElementById("image").src = "images/keys_FM_Dm.jpg"
+
+    }
+
 
     console.log("changing")
   }
