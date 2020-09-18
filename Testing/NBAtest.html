@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+
+	ctr = 0
+	
+	let url = "https://www.balldontlie.io/api/v1/players?search=davis";
+
+
+	fetch(url, {
+	 
+	})
+	.then(response => response.json())
+	.then(result => {
+	  console.log('Success:', result);
+	})
+	.catch(error => {
+	  console.error('Error:', error);
+	});
+	
+	ctr = ctr + 1
+	
+
+
+</script>
+</body>
+</html>
