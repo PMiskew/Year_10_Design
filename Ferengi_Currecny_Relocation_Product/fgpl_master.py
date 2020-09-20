@@ -1,6 +1,81 @@
 import tkinter as tk
+import requests
+import json
+
 
 root = tk.Tk()
+#Data
+country = [] #For Drop Down
+value = [] #For Drop Down
+bar = [200] #value of 1 GPB:EUR
+exchange = [200]
+
+items = []
+item_values = []
+
+def select(x):
+
+	i= country.index(x)
+	exchange[0] = value[i]*bar[0]
+	print(exchange[0])
+
+
+def process1(*args):
+	print("process 1")
+	value_entry.focus()
+
+def process2(*args):
+	print("process 2")
+	item_entry.focus()
+
+	items.append(item_entry.get())
+	item_values.append(value_entry.get())
+
+	print(items)
+	print(item_values)
+
+	item_entry.delete(0,tk.END)
+	value_entry.delete(0,tk.END)
+
+
+
+
+
+
+#ACCESS API****************************************************
+#Get Key
+#This is a file not in my respository I don't want you to have it
+
+
+#Get Key
+#This is a file not in my respository I don't want you to have it
+file = open("..//..//API_Keys//fixerkey.txt","r")
+
+key = file.read()
+
+
+country.append("CAD")
+'''
+resp = requests.get('http://data.fixer.io/api/latest?access_key='+key)
+
+#Converts response to JSON
+data = resp.json()["rates"]
+
+
+
+for key in data:
+	country.append(key)
+	value.append(data[key])
+
+country = []
+value = []
+
+for key in data:
+	country.append(key)
+	value.append(data[key])
+'''
+
+
 
 
 def generate_values():
@@ -63,9 +138,9 @@ f4 = tk.Frame(w1)
 
 cur_label = tk.Label(f1, text = "Select Currency")
 variable = tk.StringVar(root)
-variable.set("one") # default value
+variable.set("CAD") # default value - Set to Canadian
 
-cur_select = tk.OptionMenu(f1, variable, "one", "two", "three")
+cur_select = tk.OptionMenu(f1, variable, *country, command = select)
 
 cur_label.pack()
 cur_select.pack()
@@ -76,9 +151,12 @@ cur_select.pack()
 input1_label = tk.Label(f2, text = "Input Item and Value in GPL")
 input2_label = tk.Label(f2, text = "GPL = GOLD PRESSED LATINUM")
 
+
 item_entry = tk.Entry(f2)
 value_entry =tk.Entry(f2)
 
+item_entry.bind("<Return>",process1)
+value_entry.bind("<Return>",process2)
 #Frame 3 Setup
 
 display = tk.Text(f3, height = 25, width = 60)
