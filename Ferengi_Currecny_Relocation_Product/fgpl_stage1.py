@@ -3,9 +3,6 @@ import tkinter as tk
 root = tk.Tk()
 
 
-def generate_values():
-	print("generate_values")
-
 def login():
 	print("LOGIN")
 	w2.pack_forget()
