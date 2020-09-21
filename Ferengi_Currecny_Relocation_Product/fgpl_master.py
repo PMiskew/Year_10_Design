@@ -8,14 +8,14 @@ root = tk.Tk()
 country = [] #For Drop Down
 value = [] #For Drop Down
 bar = [200] #value of 1 GPB:EUR
-exchange = [200]
+exchange = [200,"EUR"]
 
 items = []
 item_values = []
 
 def select(x):
 
-	i= country.index(x)
+	i = country.index(x)
 	exchange[0] = value[i]*bar[0]
 	print(exchange[0])
 
@@ -29,13 +29,23 @@ def process2(*args):
 	item_entry.focus()
 
 	items.append(item_entry.get())
-	item_values.append(value_entry.get())
+	item_values.append(int(value_entry.get()))
 
 	print(items)
 	print(item_values)
 
 	item_entry.delete(0,tk.END)
 	value_entry.delete(0,tk.END)
+
+	updateDisplay()
+
+def updateDisplay():
+
+	text = ""
+	for i in range (0, len(items),1):
+		text = text + items[i] + ":" + str(item_values[i])+"GPL = "+str(exchange[0]*item_values[i]) +"\n"
+
+	print(text)
 
 
 
