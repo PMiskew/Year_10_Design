@@ -29,8 +29,11 @@ value = []
 rate_data = data["rates"]
 
 def action(x):
-	print(x)
+	#The below two lines do the same thing
+	print(x) 
+	print(var.get()) 
 	print(rate_data[x])
+	
 
 
 #Step 2: Copy all the data from the pull into these lists
@@ -38,6 +41,7 @@ def action(x):
 for key in rate_data:
 	country.append(key)
 	value.append(rate_data[key])
+
 
 print(country)
 print(value)
