@@ -15,3 +15,23 @@ API Used: https://fixer.io/
 - This is a free API provided there are under 1000 pulls per month. It provides a valuation of currency relative to a selected currency.  
 
 
+Folder Structure
+
+	Git_Hub_Repos
+
+		--> Year_10_Design (REPO)
+			--> Ferengi_Currency_Relocation_Product
+				- accessAPI.py
+
+		--> DP_CS_Code_PMiskew (REPO)
+
+		--> API_Keys
+			-fixerkey.txt 
+
+I need to "travel" from Ferengi_Currency_Reloacation_Product to fixerkey.txt
+
+
+
+
+
+

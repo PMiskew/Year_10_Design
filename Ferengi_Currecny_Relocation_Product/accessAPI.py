@@ -1,5 +1,6 @@
 import requests
 import json
+from pprint import pprint
 import tkinter as tk
 
 
@@ -17,56 +18,49 @@ resp = requests.get('http://data.fixer.io/api/latest?access_key='+key)
 #Converts response to JSON
 data = resp.json()
 
+#pprint(data)
+#print(data["timestamp"])
 #print(data["base"])
-#print(data["date"])
 #print(data["rates"]["CAD"])
-#print(data["rates"]["GBP"])
-#print(data["rates"])
 
-#Step 1: Create two lists
 country = []
 value = []
-rate_data = data["rates"]
 
-def action(x):
-	#The below two lines do the same thing
-	print(x) 
-	print(var.get()) 
-	print(rate_data[x])
-	
+#loops through the dictionary at data["rates"]
+for key in data["rates"]:
+	#print(key,":",data["rates"][key])
 
-
-#Step 2: Copy all the data from the pull into these lists
-#Loop through all rates using a "special loop"
-for key in rate_data:
-	country.append(key)
-	value.append(rate_data[key])
-
+	country.append(key) #append the key into country list
+	value.append(data["rates"][key]) #append the value into value list
 
 print(country)
 print(value)
 
-root = tk.Tk() #this makes your root window
 
-f1 = tk.Frame(root)
+def change(x):
+	print(x)
+	print(data["rates"][x])
 
-cur_label = tk.Label(f1, text = "Select Currency")
-var = tk.StringVar(f1)
-var.set(country[0]) # d
-dropDown = tk.OptionMenu(f1,var,*country, command = action)
+root = tk.Tk() #Creates my main window for GUI program
+#Build in here
+#	Step 1: Construct the widget/object
+#	Step 2: Configure widget/object
+#	Step 3: Place it on the frame/main window
 
-cur_label.pack()
-dropDown.pack()
+lab = tk.Label(root, text = "Select Currency") #construction 
 
-f1.pack()
-root.mainloop() #starts your program and waits for something to happen
+var = tk.StringVar(root)
+var.set(country[0])
+option_menu = tk.OptionMenu(root, var, *country, command = change)
+
+lab.pack() #placing
+option_menu.pack()
+
+
+
+
+root.mainloop() #Executes an infitie loop waiting for the use to do something
 print("END")
-
-
-
-
-
-
 
 
 
