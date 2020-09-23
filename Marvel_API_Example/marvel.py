@@ -17,7 +17,7 @@ def getKeys():
 
 def getHash(publicKey, privateKey):
 	key = "1" + privateKey + publicKey
-	result = hashlib.md5(key.encode())
+	result = hashlib.md5(key.encode()) #Don't expose private key
 	return result.hexdigest()
 
 key = getKeys()
