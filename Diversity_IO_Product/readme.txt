@@ -1,5 +1,7 @@
 IMPORTANT:  This demo product uses an API that predicts ethnicity and gender using a predefined model.  This demo is meant to give an opportunity for students to critically question the API results and think about the larger question of how we use data to make predictions. 
 
+THIS IS A BAD API - I DO NOT RECOMMEND IT EVER BE USED. Part of the reason we look at this example is to understand why it is so important to be critical in our use of APIs.  
+
 Purpose:
 
 The purpose of this simple product is
