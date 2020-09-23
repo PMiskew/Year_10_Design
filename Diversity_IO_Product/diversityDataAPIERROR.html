@@ -32,20 +32,20 @@ Step 2: Read the comments and read the error.
 	let url = "https://api.diversitydata.io/?fullname=Paul%20Miskew"
 	console.log(url);
 	
-	
+	var data1;
 	fetch(url)
 	  .then((resp) => resp.json()) // Transform the data into json
 	  .then(function(data) {
 	    // Create and append the li's to the ul
 	    console.log(data)
 	    console.log(data.fullname)
-
+	    data1 = data
 	    //MOVE COPIED CODE HERE:
 		})
 	  .catch(function(error) {
 	    // If there is any error you will catch them here
 	    console.log(error);
-	}); 
+		}); 
 
 	
 	  
@@ -57,16 +57,16 @@ Step 2: Read the comments and read the error.
 	}
 
 	let node = createNode("h3");
-	node.innerHTML = data.fullname;
+	node.innerHTML = data1.fullname;
 	append(output,node)
 
 	node = createNode("h3");
-	node.innerHTML = data.gender +": "+data["gender probability"];
+	node.innerHTML = data1.gender +": "+data1["gender probability"];
 	append(output,node)
 
 
 	node = createNode("h3");
-	node.innerHTML = data.ethnicity +": "+data["ethnicity probability"];
+	node.innerHTML = data1.ethnicity +": "+data1["ethnicity probability"];
 append(output,node)
 	   //TO HERE
 

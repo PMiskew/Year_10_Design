@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+</head>
+<body>
+
+
+<script> 
+//What is this showing:
+/*
+	This program performs a fetch from jsonplaceholder, it then prints the data
+	in two places. 
+		1. Prints the data inside the fetch 
+		2. Prints the data after the fetch
+
+	What should you notice?
+
+	The first print is fine, but the second does not print. When you look at the console you will notice that the first print (coded earlier in the code) actually prints second. The second print show a promise.  This means that the data is yet to be returned by the time the print is attempted.  A promise means "Trust me the data is coming"
+
+*/
+
+result = fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+  .then(data => console.log("1",data));
+
+
+return new Promise((resolve, reject) => {
+   if(somethingSuccesfulHappened) {
+      const successObject = {
+         msg: 'Success',
+         data,//...some data we got back
+      }
+      resolve(successObject); 
+   } else {
+      const errorObject = {
+         msg: 'An error occured',
+         error, //...some error we got back
+      }
+      reject(errorObject);
+   }
+});
+
+
+console.log("2:",result)
+</script>
+</body>
+</html>
