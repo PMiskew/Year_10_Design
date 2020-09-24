@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>
-		
-	</title>
+  <title>
+    
+  </title>
 </head>
 <body>
 
@@ -11,40 +11,46 @@
 <script> 
 //What is this showing:
 /*
-	This program performs a fetch from jsonplaceholder, it then prints the data
-	in two places. 
-		1. Prints the data inside the fetch 
-		2. Prints the data after the fetch
-
-	What should you notice?
-
-	The first print is fine, but the second does not print. When you look at the console you will notice that the first print (coded earlier in the code) actually prints second. The second print show a promise.  This means that the data is yet to be returned by the time the print is attempted.  A promise means "Trust me the data is coming"
-
+  
+  What is we want to use result, but only after the fetch is done?  This example shows how to link promiseA to two functions one that runs if the promise if fulfilled and one that runs if it is not fulfilled.  Note, getting an error based on the link still results with a fulfilled promise. 
 */
 
-result = fetch('https://jsonplaceholder.typicode.com/users')
-  .then(response => response.json())
-  .then(data => console.log("1",data));
+
+  function resolve() {
+    console.log("RESOLVE",result)
+  }
+
+  function reject() {
+    console.log("Promise Reject")
+  }
+
+  var result = [1,2,3]
+  promiseA = fetch('https://jsonplaceholder.typicode.com/users1')
+      .then((response) => response.json())
+      .then (function(data) {
+        result = data
+        console.log("IN FETCH: ",result)
+        //This is where you do the data processing
+      });
 
 
-return new Promise((resolve, reject) => {
-   if(somethingSuccesfulHappened) {
-      const successObject = {
-         msg: 'Success',
-         data,//...some data we got back
-      }
-      resolve(successObject); 
-   } else {
-      const errorObject = {
-         msg: 'An error occured',
-         error, //...some error we got back
-      }
-      reject(errorObject);
-   }
-});
+  promiseA.setTimeout(function() {
+      throw 'or nah';
+      // return Promise.reject('or nah'); also won't work
+    }, 1);
+
+  console.log(result)
+ 
+  resolve() //directly call resolve
+  promiseA.then(resolve, reject); //only called resolve when promiseA is fulfilled
 
 
-console.log("2:",result)
+
+
+
+
+
+
 </script>
 </body>
 </html>

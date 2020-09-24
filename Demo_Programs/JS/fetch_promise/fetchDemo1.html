@@ -13,45 +13,30 @@
 /*
 	This program performs a fetch from jsonplaceholder, it then prints the data
 	in two places. 
-		1. Prints the data inside the fetch 
-		2. Prints the data after the fetch
+		1. Prints the result inside the fetch 
+		2. Prints the result after the fetch
+
+	This program also prints out promiseA which is what the fetch returns.  This object contains all hte information about the state of the fetch. Notice that it prints out that the fetch is fullfilled. 
 
 	What should you notice?
 
-	The first print is fine, but the second does not print. When you look at the console you will notice that the first print (coded earlier in the code) actually prints second. The second print show a promise.  This means that the data is yet to be returned by the time the print is attempted.  A promise means "Trust me the data is coming"
+	The output of result is first [1,2,3], the original value of result and then the object that is fetched inside the fetch command. However, the output inside the fetch is first, so why does it print out second.  This is because the fetch starts and then JS keeps processing the code.  When we print out the result the second time the fetch hasn't completed what it is doing and therefore [1,2,3] is printed out.  
+
+	The promise object is printed to show that a promise has been returned from the fetch.  We can now take this promise and act on it.  This means we can link a function to the promise that only runs upon its return.  We will show this in the second demo. 
 
 */
 
+	var result = [1,2,3]
+	promiseA = fetch('https://jsonplaceholder.typicode.com/users')
+	  	.then((response) => response.json())
+	  	.then (function(data) {
+	  		result = data
+	  		console.log("IN FETCH: ",result)
+	  		//This is where you do the data processing
+	  	});
 
-var result = [1,2,3]
-
-function successCallback(){
-
-	console.log("SUCCESS",result)
-	//RENDER A GRAPHICAL DISAPLY
-}
-
-function failureCallback() {
-	console.log("FAILURE")
-
-}
-
-
-
-promiseA = fetch('https://jsonplaceholder.typicode.com/photos')
-  	.then((response) => response.json())
-  	.then (function(data) {
-  		result = data
-  		console.log("IN FETCH: ",result)
-  	});
-
-
-successCallback() 
-//promiseA.then(successCallback, failureCallback);
-
-
-console.log("END",result)
-
+	console.log(result)
+	console.log(promiseA)
 
 
 
