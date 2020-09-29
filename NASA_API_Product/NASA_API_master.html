@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		NASA API EXAMPLE
+	</title>
+	<input type="date" id="calendar" name="birthday" onChange= "change()"></br>
+	<img src="" id = "myImg" alt="Girl in a jacket" width="500" height="600">
+
+
+	</div>
+</head>
+<body>
+
+	<script>
+
+	function change() {
+		console.log("CHANGED")
+
+		cal = document.getElementById("calendar")
+		console.log(cal.value)
+
+
+		fetch("https://api.nasa.gov/planetary/apod?date="+cal.value+"&api_key=DEMO_KEY")
+	  .then((resp) => resp.json()) // Transform the data into json
+	  .then(function(data) {
+
+	  	console.log(data)
+	  	document.getElementById("myImg").src = data["hdurl"];
+
+	  });
+
+	  
+	  
+	}
+	
+
+	</script>
+
+</body>
+</html>
