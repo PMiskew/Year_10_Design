@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Goolge Auth Demo</title>
+
+	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+    	.btn {
+
+    		border: 10px 0px;
+    	}
+
+    </style>
+</head>
+<body class = "red lighten-1">
+	
+	<div class = "container">
+		<div class = "center-align">
+			<a id = "btn" class="waves-effect waves-light btn-large">Login</a>
+		</div>
+	</div>
+
+	
+	<script>
+
+		M.AutoInit();
+		M.toast({html: 'Login and Explore'})
+
+		element = document.getElementById("btn")
+
+		$(document).ready(function(){
+  			$(element).bind("click", function(){
+    			alert("The paragraph was clicked.");
+  			});
+		});
+
+	</script>
+</body>
+</html>

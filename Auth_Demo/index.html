@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Welcome
+	</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   
+</head>
+<body>
+
+<!--
+LANDING PAGE
+-->
+	<div id = "landing" class = "container">
+		<h2>Login</h2>
+		<a href = "#modal-login" class = "btn orange modal-trigger">LOGIN</a>
+	</div>
+
+	<div id = "modal-login" class = "modal">
+  		<div class = "modal-content">
+	    	<h4>Login</h4><br />
+	    	<form id = "login-form">
+	      		<div class = "input-field">
+	        		<input type = "email" id = "login-email" autocomplete="" required/>
+	        		<label for= "login-email">Email Address</label>
+	      		</div>
+	      		<div class = "input-field">
+	        		<input type = "password" id="login-password" autocomplete="" required />
+	        		<label for = "login-password">Choose password</label>
+	      		</div>
+	      
+	      		<button class = "btn yellow darken-2 z-depth-0">Login</button>
+	    	</form>
+  		</div>
+  	</div>
+
+<!--
+LOGGED IN INFORMATION
+-->
+  	<div id = "home" class = "container" display = "none">
+  		<p>main page</p>
+		<h2>Logout</h2>
+		<a href = "#" id = "logout_btn" class = "btn orange">LOGOUT</a>
+  	</div>
+
+ 	  <!-- Compiled and minified JavaScript -->
+ 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  	<script src="scripts/app.js"></script>
+  	<script>
+    	$(document).ready(function(){
+      		$('.modal').modal();
+
+   		});
+   	</script>
+</body>
+</html>
