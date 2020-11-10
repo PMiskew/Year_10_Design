@@ -33,9 +33,16 @@ def register(*args):
 	print(users)
 	print(passwords)
 
+	#write logic to valid format. 
+	
 
 def login():
 	print("login")
+
+	#Write logic to check if user and password exists
+
+
+	#if its valid open the new screen
 
 
 root = tk.Tk()
