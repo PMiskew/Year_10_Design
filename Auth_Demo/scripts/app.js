@@ -31,7 +31,13 @@ function checkCred(name,pwd) {
 
 //checkCred("user1","pword1")
 
-
+/*
+Problem: With this approach we cannot easily pass along the 
+user name and password.  Since when we load a new page the app.js
+gets run again and the result is that the user name and password
+gets reset to null.  This means if data is being collected or the 
+display is being customized you cannot link it to the user. 
+*/
 function loginA(e) {
 	
     e.preventDefault() //stops page from reloading
@@ -52,6 +58,9 @@ function loginA(e) {
     
 }
 
+/*
+Better: This just updates the page as a whole
+*/
 function loginB(e) {
 
     e.preventDefault() //stops page from reloading
