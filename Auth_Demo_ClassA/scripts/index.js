@@ -5,6 +5,8 @@
 
 var uNames = ["user1@test.com","user2@test.com"];
 var pWords = ["pword1","pword2"];
+var user = null
+var pword = null
 
 //Write a function call checkCred that takes two parametetesr
 //
@@ -36,5 +38,11 @@ function checkCred(u, p) {
 
 }
 
-result = checkCred("user1@test.com","pword1")
-console.log(result)
+
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+
+
+//result = checkCred("user1@test.com","pword1")
+//console.log(result)

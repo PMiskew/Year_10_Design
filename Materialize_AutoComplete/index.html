@@ -30,6 +30,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
 
+    	
 		 
 		 document.addEventListener('DOMContentLoaded', function() {
 		    var elems = document.querySelectorAll('.autocomplete');
@@ -38,29 +39,34 @@
         				"Microsoft": null,
         				"Google": 'https://placehold.it/250x250',
         				"UCC": null
-      				}}
-
-
-		    	);
+      				}
+      			,onAutocomplete: function(data) { 
+      				console.log("THIS")
+      			} 
+      		 });
 		  });
+		  
 
 		  
 		  	
-		  
-			
-			/*
-		   $(document).ready(function(){
-    			
-    			$('input.autocomplete').autocomplete({
-     				data: {
-        				"Apple": null,
-        				"Microsoft": null,
-        				"Google": 'https://placehold.it/250x250',
-        				"UCC": null
-      				},
-    			});
-  			});
-  			*/
+	/*	  
+
+			$(document).ready(function(){
+				$('input.autocomplete').autocomplete({
+					data: {
+						"Apple": null,
+						"Microsoft": null,
+						"Google": 'https://placehold.it/250x250'
+					},
+					onAutocomplete:function(data){
+						console.log("test");
+
+					}
+				});
+			});  			
+
+			//*/
+
 
 			
 

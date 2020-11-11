@@ -12,15 +12,35 @@
 </head>
 <body>
 
-	<div class = "container">
-
-
-		<h1>Login</h1>
+	<!--
+	LANDING PAGE
+	-->
+	<div id = "landing" class = "container">
+		<h2>Login</h2>
 		<a href = "#modal-login" class = "btn orange modal-trigger">LOGIN</a>
-
 	</div>
 
+	<div id = "modal-login" class = "modal">
+  		<div class = "modal-content">
+	    	<h4>Login</h4><br />
+	    	<form id = "login-form">
+	      		<div class = "input-field">
+	        		<input type = "email" id = "login-email" autocomplete="" required/>
+	        		<label for= "login-email">Email Address</label>
+	      		</div>
+	      		<div class = "input-field">
+	        		<input type = "password" id="login-password" autocomplete="" required />
+	        		<label for = "login-password">Choose password</label>
+	      		</div>
+	      
+	      		<button class = "btn yellow darken-2 z-depth-0">Login</button>
+	    	</form>
+  		</div>
+  	</div>
 
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src = "scripts/index.js"></script>
