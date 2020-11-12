@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+
+
+
+<script>
+
+	ctr = 0
+	
+	let url = "https://www.balldontlie.io/api/v1/games?team_ids[]=1&per_page=100&start_date=2018-11-01&&end_date=2018-12-01"
+
+
+	//does my first fetch which access 1 pages.
+	//from this I can get all the pages
+	fetch(url, {
+	 
+	})
+	.then(response => response.json())
+	.then(result => {
+	  //console.log('Success:', result);
+	  	//I now know how many pages
+		pages = result["meta"]["total_pages"]
+		console.log(pages)
+		console.log(result)
+		
+		
+	})
+	.catch(error => {
+	  console.error('Error:', error);
+	});
+	
+	ctr = ctr + 1
+	
+
+
+</script>
+</body>
+</html>

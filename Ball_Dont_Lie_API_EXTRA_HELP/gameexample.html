@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+
+
+
+<script>
+
+	ctr = 0
+	
+	let url = "https://www.balldontlie.io/api/v1/games?per_page=100&seasion=2018";
+
+
+	//does my first fetch which access 1 pages.
+	//from this I can get all the pages
+	fetch(url, {
+	 
+	})
+	.then(response => response.json())
+	.then(result => {
+	  //console.log('Success:', result);
+	  	//I now know how many pages
+		pages = result["meta"]["total_pages"]
+		
+		//loops through all the pages
+		for (i = 0; i < pages; i = i + 1) {
+		
+			url = "https://www.balldontlie.io/api/v1/games?per_page=100&seasion=2018&page="+i;
+
+		
+		  	fetch(url, {
+		 
+			})
+			.then(response => response.json())
+			.then(result => {
+		  		console.log(result);
+		 	 //How do I loop through the pages
+		  
+
+			})
+			.catch(error => {
+			  console.error('Error:', error);
+			});
+		
+
+		}
+	})
+	.catch(error => {
+	  console.error('Error:', error);
+	});
+	
+	ctr = ctr + 1
+	
+
+
+</script>
+</body>
+</html>
