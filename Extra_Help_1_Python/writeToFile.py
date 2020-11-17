@@ -28,7 +28,7 @@ root.mainloop()
 #When close the program I want to write the contents of this
 #list to a file
 #You can toggle between w for write and a for append
-file = open("data.txt","a")
+file = open("data.txt","w")
 
 for i in range(0, len(l), 1):
 	file.write(str(l[i])+"\n")

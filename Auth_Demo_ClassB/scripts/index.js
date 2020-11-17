@@ -32,12 +32,16 @@ function checkCred(u, p) {
 	return false
 }
 
-x = checkCred("user5@test.com","pword1")
-console.log(x)
-x = checkCred("user1@test.com","pword2")
-console.log(x)
-x = checkCred("user1@test.com","pword1")
-console.log(x)
+//I need to access hte information from the webpage and then 
+//pass it to the function.  If true I update display for a valid
+//user, if it is false I don't anything (send an error message)
+
+//x = checkCred("user5@test.com","pword1")
+//console.log(x)
+//x = checkCred("user1@test.com","pword2")
+//console.log(x)
+//x = checkCred("user1@test.com","pword1")
+//console.log(x)
 
 
 
