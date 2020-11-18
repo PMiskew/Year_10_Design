@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html style="background-color: LightGray">
+
+
+<head>
+
+	<title>Home Page</title>
+	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+	<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="CardioFitness.html">Cardio Fitness</a></li>
+        <li><a href="HealthyEating.html">Eating</a></li>
+        <li><a href="Programbuilder.html">Build A Program</a></li>
+      </ul>
+    </div>
+  </nav>
+        
+	<div id="login">
+	
+		<div class="container">
+				
+			<h1 class="red lighten-2 class white-text">Your Daily Health And Fitness</h1>
+
+			<h2 class="grey darken-">Build A Program</h2>
+
+			<p> Full Name: </p>
+
+			<input type="text" id ="user">
+
+			<p> Password: </p>
+
+			<input type="text" id ="password">
+
+
+			<a id="loginbtn" class="waves-effect waves-light btn-large"><i class="material-icons left">fitness_center</i>Login</a>
+			
+
+
+			<a class="waves-effect waves-light btn-large"><i class="material-icons left">send</i>Sign up</a>
+			
+			
+
+			
+		</div>
+	</div>
+	<div id="datainput">
+		<div class="container">
+			<h1>data</h1>
+
+
+		</div>		
+	</div>
+
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+		<script>
+			var datainput=document.getElementById("datainput")
+			var login=document.getElementById("login")
+			var loginbtn=document.getElementById("loginbtn")
+			
+			datainput.style.display="none"
+
+			function loginfnc (){
+				console.log("running")
+				//store text from iduser store text from idpassword//
+				login.style.display="none"
+
+				datainput.style.display="block"
+			}
+			loginbtn.addEventListener("click",loginfnc)
+		</script>
+
+
+</body>
+</html>
