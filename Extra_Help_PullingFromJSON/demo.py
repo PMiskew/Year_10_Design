@@ -13,6 +13,11 @@ data = resp.json()
 
 questions = []
 answers = []
+#pdata[0] --> current Question
+#pdata[1] --> current User
+#pdata[2] --> Question rigth
+#pdata[3] --> Question wrong
+pdata = [0,"user1",0,0]
 
 #Taking the JSON data and putting into hte lists questions and answers
 #so you can use it in your program
@@ -25,17 +30,35 @@ for i in range(0, len(data),1):
 #the list questions
 
 def next(*args):
-	print("Next")
 
-	#generate a random number from 0 to len(questions)
-	x = random.randint(0,len(questions) - 1)
-	print(x)
-	label.config(text = questions[x])
+
+	#I only want to change the question if the answer is correct
+	#Step 1: Get the data from entry
+	ans = entry.get()
+	
+
+
+	#Step 2: Check the ans agains the answer 
+	print(ans)
+	cq = pdata[0]
+	if (ans == answers[cq]):
+		print("CORRECT")
+		x = random.randint(0,len(questions) - 1)
+		label.config(text = questions[x])
+	else:
+		labelR.config(text = "WRONG")
+
 
 root = tk.Tk()
 
 label = tk.Label(root,text = questions[0])
 label.pack()
+
+entry = tk.Entry(root,width = 50)
+entry.pack()
+
+labelR = tk.Label(root,text = "ENTER AN ANSWER")
+labelR.pack()
 
 btn = tk.Button(root, text = "NEXT", command = next)
 btn.pack();
