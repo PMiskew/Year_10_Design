@@ -1,19 +1,19 @@
 [
 	{
-		"question": "What is the area of a rectangle with width = 4cm and height = 2cm",
-		"answer": 8
+		"question": "Question 1",
+		"answer": "Ans 1"
+	},
+		{
+		"question": "Question 2",
+		"answer": "Ans 2"
 	},
 	{
-		"question": "What is the area of a triangle with base = 2 and height = 8",
-		"answer": 8
+		"question": "Question 3",
+		"answer": "Ans 3"
 	},
 	{
-		"question": "What is the area of a triangle with base = 2 and height = 8",
-		"answer": 8
-	},
-	{
-		"question": "What is the area of a triangle with base = 2 and height = 8",
-		"answer": 8
+		"question": "Question 4",
+		"answer" : "Ans 4"
 	}
 
 ]
