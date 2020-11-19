@@ -51,11 +51,12 @@
 			
 		</div>
 	</div>
-	<div id="datainput">
+	<div id="datainput" style = "display: none;">
 		<div class="container">
 			<h1>data</h1>
 
-
+			<a id = "logout" class="waves-effect waves-light btn-large"><i class="material-icons left">send</i>Logout</a>
+			
 		</div>		
 	</div>
 
@@ -63,20 +64,49 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 		<script>
+
+			var users = ["user1","user2","user3"]
+			var passwords = ["pword1","pword2","pword3"]
+			var activeUser = ""
+
 			var datainput=document.getElementById("datainput")
 			var login=document.getElementById("login")
 			var loginbtn=document.getElementById("loginbtn")
-			
-			datainput.style.display="none"
+			var logoutbtn = document.getElementById("logout")
+			var user = document.getElementById("user")
+			var password = document.getElementById("password")
+
+
+			function logoutfnc() {
+				login.style.display="block"
+				datainput.style.display="none"
+			}
 
 			function loginfnc (){
 				console.log("running")
-				//store text from iduser store text from idpassword//
-				login.style.display="none"
+				//Step 1: I have to access the data entered in the text boxs
+				u = user.value;
+				p = password.value;
+		
+				//Step 2: Loop through users to look for u
+				for (i = 0; i < users.length; i = i + 1) {
+					if (users[i] === u) {
+						console.log("GOT IT!")
+						//Check if the passwor is correct
+						if (passwords[i] === p) {
+							activeUser = u
+							login.style.display="none"
+							datainput.style.display="block"
+						}
+					}
 
-				datainput.style.display="block"
+				}
+				//store text from iduser store text from idpassword//
+				
 			}
+
 			loginbtn.addEventListener("click",loginfnc)
+			logoutbtn.addEventListener("click",logoutfnc)
 		</script>
 
 
