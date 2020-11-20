@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+
+	</title>
+
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+		<div class="row">
+			<form class="col s12">
+				<div class="row">
+					<div class="input-field col s6">
+						<i class="material-icons prefix">account_circle</i>
+						<input id="icon_prefix" type="text" class="validate">
+						<label for="icon_prefix">First Name</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="material-icons prefix">phone</i>
+						<input id="icon_telephone" type="tel" class="validate">
+						<label for="icon_telephone">Telephone</label>
+					</div>
+
+					<a id = "submit" class="waves-effect waves-light btn">button</a>
+				</div>
+			</form>
+		</div>
+
+
+
+
+	    <!-- Compiled and minified JavaScript -->
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	            
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+		<!-- TODO: Add SDKs for Firebase products that you want to use
+		https://firebase.google.com/docs/web/setup#available-libraries -->
+		<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+
+		<script>
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		var firebaseConfig = {
+			apiKey: "AIzaSyD1Brr7LRZRiLr1Gnr_2k32omRB3RJKVYc",
+			authDomain: "swim-project-ea6f4.firebaseapp.com",
+			databaseURL: "https://swim-project-ea6f4.firebaseio.com",
+			projectId: "swim-project-ea6f4",
+			storageBucket: "swim-project-ea6f4.appspot.com",
+			messagingSenderId: "386722213429",
+			appId: "1:386722213429:web:1bc8e907a5b402eb364b7c",
+			measurementId: "G-RWPJ2R78X0"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+  		var database = firebase.database();
+
+		btn = document.getElementById("submit");
+
+		btn.addEventListener("click",function() {
+			console.log("clicks")
+			n = document.getElementById("icon_prefix").value
+			console.log(n)
+			setData(n)
+
+
+		})
+
+
+		function setData(val) {
+
+            // Create a database object that we can refer to
+            var ref = database.ref('DATA');
+
+
+            
+            var data = {
+                name: val
+            }
+            // "PUSH" means we add something to the database
+            ref.push(data);
+        } // end setdata
+  		//firebase.analytics();
+</script>
+
+
+</body>
+</html>
