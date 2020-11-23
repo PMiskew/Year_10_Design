@@ -1,0 +1,1 @@
+This is an extra help to show a student how to access a datbase in firebase

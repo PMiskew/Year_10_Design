@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animee Project</title>
+
+	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+
+
+<div class="container">
+	<a id = "btnAddUser" class="waves-effect waves-light btn">Add User Example</a>
+	<a id = "btnSetData" class="waves-effect waves-light btn">Set Data Example</a>
+</div>
+
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+<script>
+	// Your web app's Firebase configuration
+	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	var firebaseConfig = {
+		apiKey: "AIzaSyAMIN9_BiwsoZzFXgmuN00bSmZfeDZzdb0",
+		authDomain: "anime-demo-c6989.firebaseapp.com",
+		databaseURL: "https://anime-demo-c6989.firebaseio.com",
+		projectId: "anime-demo-c6989",
+		storageBucket: "anime-demo-c6989.appspot.com",
+		messagingSenderId: "424613199548",
+		appId: "1:424613199548:web:b2333f92ad80a5da6f9ab9",
+		measurementId: "G-62ZV0KV3NQ"
+	};
+
+  	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	var analytics = firebase.analytics();
+  	var  database = firebase.database();
+	var auth = firebase.auth();
+
+
+
+	var dataChange = firebase.database().ref('users/');
+	
+	/*
+	This grabs a snap shot of data. 
+	*/
+	dataChange.on('value', (snapshot) =>{
+		const data = snapshot.val();
+		console.log(data)
+		//updateStarCount(postElement, data);
+	});
+
+
+    /*
+    This will overwrite user if the userID exists or create a new one. 
+    */
+	function writeUserData(userId, name, email) {
+		database.ref('users/' + userId).set({
+				username: name,
+				email: email,
+		});
+	} //end writeUserData
+
+
+	/*
+	This will create a new post
+	*/
+
+	writeUserData("001","User 1","user1@test.com")
+	writeUserData("002","User 2","user2@test.com")
+
+	var buttonAU = document.getElementById("btnAddUser")
+	var buttonSD = document.getElementById("btnSetData")
+
+	buttonAU.addEventListener("click", function() {
+		
+		writeUserData("003","User 3","user3@test.com")
+
+		
+	});
+
+	buttonSD.addEventListener("click", function() {
+		
+		firebase.database().ref('users/001/').set({
+			username: "NAME CHANGE",
+			email: "EMAIL CHANGE",
+		
+
+  		});
+	});	
+
+</script>
+</body>
+</html>
