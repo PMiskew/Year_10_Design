@@ -48,17 +48,32 @@
 	var auth = firebase.auth();
 
 
-
-	var dataChange = firebase.database().ref('users/');
 	
+	//*******************ONCE****************
+
+
+	database.ref('/users/001').once('value').then(
+
+		function(snapshot) {
+  			var usernameOnce = (snapshot.val());
+  			console.log()
+  
+		});
+
+	//*******************ON******************
 	/*
-	This grabs a snap shot of data. 
+	This grabs a snap shot of data. This means this function
+	will run anytime that the database is changed. 
 	*/
-	dataChange.on('value', (snapshot) =>{
+	function update(snapshot) {
 		const data = snapshot.val();
 		console.log(data)
 		//updateStarCount(postElement, data);
-	});
+	};
+
+
+	var dataChange = firebase.ref('users/');
+	dataChangeDynamic.on('value',update);
 
 
     /*
@@ -93,7 +108,7 @@
 		
 		firebase.database().ref('users/001/').set({
 			username: "NAME CHANGE",
-			email: "EMAIL CHANGE",
+			email: "**EMAIL CHANGE",
 		
 
   		});
