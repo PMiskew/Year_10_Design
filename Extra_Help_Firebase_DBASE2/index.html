@@ -72,7 +72,7 @@
 	};
 
 
-	var dataChange = firebase.ref('users/');
+	var dataChange = firebase.database().ref('users/');
 	dataChangeDynamic.on('value',update);
 
 

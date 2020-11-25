@@ -2,50 +2,80 @@
 <html>
 <head>
 	<title>Demo_Class_A</title>
+
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 </head>
 <body>
 
+	<div class = "container">
 
 
+		<a class="waves-effect waves-light btn">Once</a>
+
+		<div id = "display">
+			<p>Once Data Display</p>
+		</div>
 
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+		<input placeholder="Input Name" id="name" type="text" class="validate">
+		<label for="name">Name</label>
+		
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+		<input placeholder="Input Food" id="food" type="text" class="validate">
+		<label for="name">Food</label>
 
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+		<br/>
+		<br/>
 
-<script>
+		<a id = "enter_data" class="waves-effect waves-light btn">Submit</a>
+		
+		<br/>
+		<br/>
+
+		<div id = "live">
+			<p>Live Update</p>
+		</div>
+
+	</div>
+
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+	 https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+
+
+	<script>
 	// Your web app's Firebase configuration
 	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 	var firebaseConfig = {
-		apiKey: "AIzaSyBGzxFcWqTJBitMr9_EBEDBSNyDCueZnVM",
-		authDomain: "design10-firebaseapm.firebaseapp.com",
-		databaseURL: "https://design10-firebaseapm.firebaseio.com",
-		projectId: "design10-firebaseapm",
-		storageBucket: "design10-firebaseapm.appspot.com",
-		messagingSenderId: "415459687786",
-		appId: "1:415459687786:web:844b9713f764faf5207913",
-		measurementId: "G-2V5VDL0HYZ"
+		apiKey: "AIzaSyCBR5s7HyT8CCgF0BvshuPg1_eULs0UQ94",
+		authDomain: "dpcs-firebasedemoa.firebaseapp.com",
+		databaseURL: "https://dpcs-firebasedemoa.firebaseio.com",
+		projectId: "dpcs-firebasedemoa",
+		storageBucket: "dpcs-firebasedemoa.appspot.com",
+		messagingSenderId: "517925855501",
+		appId: "1:517925855501:web:3db00cb68c00f9665c1044",
+		measurementId: "G-3B43VCMV0J"
 	};
 	// Initialize Firebase
-	
-	//initalizes the application on the page. 
 	firebase.initializeApp(firebaseConfig);
-
-	//gives me access to all the database commands 
-	//and my database
-	var database = firebase.database();
 	//firebase.analytics();
+	
+	var database = firebase.database();
 
 
 
-
-</script>
-
+	</script>    
 
 
 </body>

@@ -18,35 +18,79 @@
 
 
 	<script>
-	// Your web app's Firebase configuration
-	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-	var firebaseConfig = {
-		apiKey: "AIzaSyDGdJlZr-08QyzkW8ZqlZYBWOi0V1wBYGk",
-		authDomain: "design10-firebasebpm-ef93f.firebaseapp.com",
-		databaseURL: "https://design10-firebasebpm-ef93f.firebaseio.com",
-		projectId: "design10-firebasebpm-ef93f",
-		storageBucket: "design10-firebasebpm-ef93f.appspot.com",
-		messagingSenderId: "620827708635",
-		appId: "1:620827708635:web:ec7896b3edcb3bf18890fe",
-		measurementId: "G-5T2HB1SM9K"
-	};
 
-	// Initialize Firebase
-	firebase.initializeApp(firebaseConfig);
-	firebase.analytics();
-	//THIS GOES OUT AND GETS A REFERENCE TO THE DATABASE
-	//BASED ON THE THE CONFIGURATION
-	var database = firebase.database();
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		var firebaseConfig = {
 
-	function writeUserData(userId, name, email) {
-	
-		database.ref('users/' + userId).set({
-			username: name,
-			email: email,
-		});
-	}
+			apiKey: "AIzaSyDGdJlZr-08QyzkW8ZqlZYBWOi0V1wBYGk",
+			authDomain: "design10-firebasebpm-ef93f.firebaseapp.com",
+			databaseURL: "https://design10-firebasebpm-ef93f.firebaseio.com",
+			projectId: "design10-firebasebpm-ef93f",
+			storageBucket: "design10-firebasebpm-ef93f.appspot.com",
+			messagingSenderId: "620827708635",
+			appId: "1:620827708635:web:ec7896b3edcb3bf18890fe",
+			measurementId: "G-5T2HB1SM9K"
+		
+		};
 
-	writeUserData("01","test","test@test.com")
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();
+		
+		//THIS GOES OUT AND GETS A REFERENCE TO THE DATABASE
+		//BASED ON THE THE CONFIGURATION
+		var database = firebase.database();
+
+		function writeUserData(userId, name, email) {
+		
+			data = {
+				username: name,
+				email: email,
+			}
+
+			database.ref('users/' + userId).set(data);
+		}
+
+		function writeNewPost(uid, username, picture, title, body) {
+			
+			// A post entry.
+			var postData = {
+			author: username,
+			uid: uid,
+			body: body,
+			title: title,
+			starCount: 0,
+			authorPic: picture
+			};
+
+			// Get a key for a new Post.
+			var newPostKey = firebase.database().ref().child('posts').push().key;
+
+/*
+			//Write the new post's data simultaneously in the posts list and the user's post list.
+			var updates = {};
+			updates['/posts/' + newPostKey] = postData;
+			updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+
+			//no callback
+			return firebase.database().ref().update(updates)
+			
+			//with optional callback
+			//return firebase.database().ref().update(updates,(error) => {
+				if (error) {
+				// The write failed...
+				console.log("fail")
+				} else {
+				// Data saved successfully!
+					console.log("success")
+				}
+			});
+	*/		
+		}
+
+		writeUserData("01","test","test@test.com")
+		writeNewPost("01","user","pic","title","body")
 
 
 </script>
