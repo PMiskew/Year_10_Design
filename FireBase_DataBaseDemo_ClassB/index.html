@@ -5,6 +5,38 @@
 </head>
 <body>
 
+	<div class = "container">
+
+
+		<a class="waves-effect waves-light btn">Once</a>
+
+		<div class = "display">
+		
+			<p>Once Data Display</p>
+		
+		</div>
+		
+		<input placeholder="Input Name" id="name" type="text" class="validate">
+		<label for="name">Name</label>
+		
+		<input placeholder="Input Food" id="food" type="text" class="validate">
+		<label for="name">Food</label>
+		
+		<br/>
+		<br/>
+		
+		<a id = "enter_data" class="waves-effect waves-light btn">Submit</a>
+		
+		<br/>
+		<br/>
+		
+		<div id = "live">
+			<p>Live Update</p>
+		</div>
+
+	</div>
+
+
 
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
@@ -12,10 +44,6 @@
 	<!-- TODO: Add SDKs for Firebase products that you want to use
 	 https://firebase.google.com/docs/web/setup#available-libraries -->
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
-
-	<!--ADDED: COPY OTHER IMPORT AND CHANCE TO DATABASE-->
-	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
-
 
 	<script>
 
@@ -37,61 +65,7 @@
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
 		firebase.analytics();
-		
-		//THIS GOES OUT AND GETS A REFERENCE TO THE DATABASE
-		//BASED ON THE THE CONFIGURATION
-		var database = firebase.database();
-
-		function writeUserData(userId, name, email) {
-		
-			data = {
-				username: name,
-				email: email,
-			}
-
-			database.ref('users/' + userId).set(data);
-		}
-
-		function writeNewPost(uid, username, picture, title, body) {
-			
-			// A post entry.
-			var postData = {
-			author: username,
-			uid: uid,
-			body: body,
-			title: title,
-			starCount: 0,
-			authorPic: picture
-			};
-
-			// Get a key for a new Post.
-			var newPostKey = firebase.database().ref().child('posts').push().key;
-
-/*
-			//Write the new post's data simultaneously in the posts list and the user's post list.
-			var updates = {};
-			updates['/posts/' + newPostKey] = postData;
-			updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-
-			//no callback
-			return firebase.database().ref().update(updates)
-			
-			//with optional callback
-			//return firebase.database().ref().update(updates,(error) => {
-				if (error) {
-				// The write failed...
-				console.log("fail")
-				} else {
-				// Data saved successfully!
-					console.log("success")
-				}
-			});
-	*/		
-		}
-
-		writeUserData("01","test","test@test.com")
-		writeNewPost("01","user","pic","title","body")
-
+	
 
 </script>
 </body>

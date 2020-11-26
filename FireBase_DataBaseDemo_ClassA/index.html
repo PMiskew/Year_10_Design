@@ -54,6 +54,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
 
 
+
 	<script>
 	// Your web app's Firebase configuration
 	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -73,6 +74,24 @@
 	
 	var database = firebase.database();
 
+	var updateDisplay = database.ref('users/');
+
+	function onUpdate(snapshot) {
+			const data = snapshot.val();
+
+			dataStr = JSON.stringify(data)
+
+		//use for each loop to do this
+		for (var key in data) {
+			console.log(data[key])
+		}
+
+			
+			console.log("*****")
+			console.log(dataStr)
+	}
+
+	updateDisplay.on('value',onUpdate);
 
 
 	</script>    
