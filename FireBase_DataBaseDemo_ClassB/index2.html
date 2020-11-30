@@ -36,7 +36,7 @@
 		<br/>
 		
 		<div id = "live">
-			<p id = "pdisplay">Live Update</p>
+			<p>Live Update</p>
 		</div>
 
 	</div>
@@ -96,40 +96,27 @@
 
 
 		/*******************ON COMMAND*******************/
-		var userUpdate = database.ref('users/');
-
-		//Option 2: 
-		//This will create a new p tag for every entry in our database
-		//With this approach you could equally build any elemnt 
-		//gives me a reference to our div with id live
 		var display = document.getElementById("live")
 
+
+		var userUpdate = database.ref('users/');
+
 		//event/trigger --> 'value' - Reseved word that means whe something changes. 
+		
 		function onChange(snapshot) {
 
 			const data = snapshot.val();
-			display.innerHTML = ""
 			//console.log(data["01"]);
-			//var str = "" //1
+		
 			//This will loop through every object
 			for (key in data){
-				//console.log(data[key]["name"])
-				//Build some HTML elements and put that on your page.
-				//Option 1: Build a a big string and then paste it in
-				//str = str + data[key]["name"]+" : "+data[key]["food"] + "\n" //1
-			
-				//This is a way to tell the bowser to create a new elemen
-				//This element is not only disay
-				p = document.createElement("p"); //2
-
-				//Update the p tag
-				p.innerHTML = data[key]["name"] +" loves " + data[key]["food"]
-
-				//append to a section as a child
+				console.log(data[key]["name"])
+				p = document.createElement("p")
+				p.innerHTML = data[key]["name"] + " - " + data[key]["food"]
 				display.appendChild(p)
+				//Build some HTML elements and put that on your page. 
+
 			}
-			//console.log(str) //1
-			//document.getElementById("pdisplay").innerHTML = str //1
 		}
 
 		userUpdate.on('value',onChange);

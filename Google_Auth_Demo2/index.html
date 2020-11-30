@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo">Logo</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a id = "loginBTN" href="/">Login</a></li>
+				<li><a href="danalysis.html">Data Analysis</a></li>
+				<li><a href="dentry.html">Data Entry</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+	<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+	<script type="text/javascript"></script>
+
+	<script src="scripts/app.js"></script>
+
+    <script>
+
+    	var loginBTN = document.getElementById("loginBTN")
+
+    	loginBTN.addEventListener("click", function() {
+
+    		initApp();
+    	});
+    </script>
+
+
+</body>
+</html>
