@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Second Page</title>
+</head>
+<body>
+	
+
+
+	<h2>Google Authentication with Redirect</h2>
+
+	<p>Sign in with your Google account below.</p>
+
+	<button disabled id="quickstart-sign-in">Sign in with Google</button>
+
+	Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+	Firebase auth <code>currentUser</code> object value:
+	<pre><code id="quickstart-account-details">null</code></pre>
+	<div>Google OAuth Access Token:</div>
+	<pre><code id="quickstart-oauthtoken">null</code></pre>
+	
+	<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script type="text/javascript"></script>
+	<script src = "scripts/app.js"></script>
+
+	 <script>
+	 	window.onload = function() {
+            initApp();
+		};
+	</script>
+	
+
+	</body>
+</html>

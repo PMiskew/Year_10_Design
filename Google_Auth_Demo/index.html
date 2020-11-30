@@ -1,45 +1,40 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Goolge Auth Demo</title>
+    <head>
+        <title>Google Sign In Example</title>
+        <a href = "second.html">NEW PAGE</a>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-	<!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script type="text/javascript"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="scripts/app.js"></script>
+        <script>
 
-    <style>
-    	.btn {
+            window.onload = function() 
+            {
+            initApp();
+            };
 
-    		border: 10px 0px;
-    	}
+        </script>
+    </head>
+    <body>
+            <a href="/"><h3>Firebase Authentication</h3></a>
 
-    </style>
-</head>
-<body class = "red lighten-1">
-	
-	<div class = "container">
-		<div class = "center-align">
-			<a id = "btn" class="waves-effect waves-light btn-large">Login</a>
-		</div>
-	</div>
+            <h2>Google Authentication with Redirect</h2>
 
-	
-	<script>
+            <p>Sign in with your Google account below.</p>
 
-		M.AutoInit();
-		M.toast({html: 'Login and Explore'})
+            <button disabled id="quickstart-sign-in">Sign in with Google</button>
 
-		element = document.getElementById("btn")
-
-		$(document).ready(function(){
-  			$(element).bind("click", function(){
-    			alert("The paragraph was clicked.");
-  			});
-		});
-
-	</script>
-</body>
+            Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+            Firebase auth <code>currentUser</code> object value:
+            <pre><code id="quickstart-account-details">null</code></pre>
+            <div>Google OAuth Access Token:</div>
+            <pre><code id="quickstart-oauthtoken">null</code></pre>
+    </body>
 </html>

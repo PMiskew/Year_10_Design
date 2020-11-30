@@ -2,6 +2,11 @@
 <html>
 <head>
 	<title>Firebase Database Demo B</title>
+
+ 	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+          
 </head>
 <body>
 
@@ -36,7 +41,9 @@
 
 	</div>
 
-
+  <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
 
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
@@ -44,6 +51,8 @@
 	<!-- TODO: Add SDKs for Firebase products that you want to use
 	 https://firebase.google.com/docs/web/setup#available-libraries -->
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
 
 	<script>
 
@@ -66,6 +75,46 @@
 		firebase.initializeApp(firebaseConfig);
 		firebase.analytics();
 	
+		var database = firebase.database();
+
+		/*********WRITING DATA*/
+		function writeUserData(userId, name, food) {
+		
+			data = {
+
+				name: name,
+				food: food,
+			}
+			
+
+			database.ref('users/' + userId).set(data);
+		}
+
+		console.log("test")
+		writeUserData("03","Edwin","Spaghetti")
+		writeUserData("04","Noah","Har Gow")
+
+
+		/*******************ON COMMAND*******************/
+		var userUpdate = database.ref('users/');
+
+		//event/trigger --> 'value' - Reseved word that means whe something changes. 
+		function onChange(snapshot) {
+
+			const data = snapshot.val();
+			//console.log(data["01"]);
+		
+			//This will loop through every object
+			for (key in data){
+				console.log(data[key]["name"])
+				//Build some HTML elements and put that on your page. 
+
+			}
+		}
+
+		userUpdate.on('value',onChange);
+
+
 
 </script>
 </body>
