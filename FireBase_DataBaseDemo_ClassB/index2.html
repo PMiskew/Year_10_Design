@@ -6,18 +6,24 @@
  	<!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-          
+	<style>
+		.flex {
+		  display: flex;
+		  flex-wrap: wrap;
+		}
+	</style>  
 </head>
 <body>
 
 	<div class = "container">
 
 
-		<a class="waves-effect waves-light btn">Once</a>
+		<a id = "onceBTN" class="waves-effect waves-light btn">Once</a>
 
-		<div class = "display">
+		<h3>Once Display</h3>
+		<div id = "onClickDisplay" class = "row">
 		
-			<p>Once Data Display</p>
+		
 		
 		</div>
 		
@@ -30,14 +36,15 @@
 		<br/>
 		<br/>
 		
-		<a id = "enter_data" class="waves-effect waves-light btn">Submit</a>
+		<a id = "enter_dataBTN" class="waves-effect waves-light btn">Submit</a>
 		
 		<br/>
 		<br/>
 		
-		<div id = "live">
-			<p>Live Update</p>
-		</div>
+		<h3>Live Update</h3>
+		<div id = "live" class = "row">
+
+   		</div>
 
 	</div>
 
@@ -74,10 +81,41 @@
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
 		firebase.analytics();
-	
-		var database = firebase.database();
+		
 
-		/*********WRITING DATA*/
+		//*********************GENERAL ELEMENTS******************/
+
+		var database = firebase.database();
+		
+		var display = document.getElementById("live")
+		var displayON = document.getElementById("onClickDisplay")
+		var submitBTN = document.getElementById("enter_dataBTN")
+
+		var userUpdate = database.ref('users')
+
+	
+
+		/**********************GENERAL FUNCTIONS*****************/
+		function createCard(n,f) {
+
+			//These are special quotes `` top left of keyboard
+			 const html = `<div class="col s12 m6 l4">
+			 				<div class="card small blue-grey darken-1">
+								<div class="card-content white-text">
+									<span class="card-title">${n}</span>
+										<p>Favourite Food : ${f}</p>
+								</div>
+								<div class="card-action">
+									<a href="#">This is a link</a>
+									<a href="#">This is a link</a>
+								</div>
+							</div>
+							</div>`
+			
+       		return html
+		}
+			
+		/*********************WRITING DATA**********************/
 		function writeUserData(userId, name, food) {
 		
 			data = {
@@ -90,37 +128,142 @@
 			database.ref('users/' + userId).set(data);
 		}
 
-		console.log("test")
-		writeUserData("03","Edwin","Spaghetti")
-		writeUserData("04","Noah","Har Gow")
+		function enterData() {
+
+			name = document.getElementById("name").value
+			food = document.getElementById("food").value
+			
+			
+			// Get a key for a new Post.
+  			var newUserKey = database.ref().child('users').push().key;
+  			//console.log(newUserKey)
+  			writeUserData(newUserKey,name,food)
+			
+		}
+		submitBTN.addEventListener("click",enterData)
 
 
 		/*******************ON COMMAND*******************/
-		var display = document.getElementById("live")
-
-
-		var userUpdate = database.ref('users/');
-
-		//event/trigger --> 'value' - Reseved word that means whe something changes. 
 		
 		function onChange(snapshot) {
 
 			const data = snapshot.val();
-			//console.log(data["01"]);
-		
-			//This will loop through every object
-			for (key in data){
-				console.log(data[key]["name"])
-				p = document.createElement("p")
-				p.innerHTML = data[key]["name"] + " - " + data[key]["food"]
-				display.appendChild(p)
-				//Build some HTML elements and put that on your page. 
+			
 
-			}
+			//This will loop through every object
+		
+			d = document.createElement("div")
+			d.innerHTML = createCard(data["name"],data["food"])
+			display.appendChild(d)
+			
+				
+	
 		}
 
-		userUpdate.on('value',onChange);
+		function onChangeB(snapshot) {
+			console.log("onChangeB")
+			console.log(snapshot.val())
+	
+		}
 
+		userUpdate.orderByChild("name").on('child_added', onChange)
+
+		//userUpdate.on('child_changed', onChange)
+
+		//userUpdate.on('child_removed', onChange);
+		//userUpdate.on('value',onChange);
+
+		/*******************ONCE COMMAND*******************/
+		/*
+		Big Idea:  When this command is invoked it uses the value trigger which 
+		passes the entire contents as a list.  This means that if we want to sort 
+		the data we have to first pass it into a temp structure then sort it and 
+		use that structure to display it.  
+
+		This is not the best approach, but as a beginning programmer is highlights 
+		many essential concepts.  In the approach below we have written a selection 
+		sort to help with this. 
+		*/
+
+
+		function onClick(snapshot) {
+
+			//STEP 0: CLEAR THE DIV FROM PAST UPDATE
+			//resets the display to remove what was there from last update
+			displayON.innerHTML = ""
+		
+			//STEP 1: GRAB ALL THE DATA
+			//Grab the values from the snapshot.  This is a list. 
+			const data = snapshot.val();
+			
+
+			//STEP 2: COPY DATA FROM DATABASE COLLECTION INTO 
+			
+			//temp array to hold the data from the database.
+			//We will be creating an array of objects
+			let temp = []
+
+
+			//Copy all the data into an array of objects we can work with 
+			//Standard Loop for traversing through COLLECTION (IB Term) from database
+			for (key in data){
+				//Build an object
+				b = {
+					name: data[key]["name"],
+					food: data[key]["food"],
+				}
+				//Push data onto array
+				temp.push(b)
+			}
+
+			//STEP 3: SORT DATA
+			//Sort Data: In this case I will use the selection Sort
+			for (i = 0; i < temp.length - 1; i = i + 1) {
+				
+				front = i
+				minIndex  = i
+				for (j = i + 1; j < temp.length; j = j + 1) {
+
+
+					if (temp[j]["name"] < temp[minIndex]["name"]) {
+						minIndex = j;
+					}
+
+				}
+
+
+				tempValue = temp[front]
+				temp[front] = temp[minIndex]
+				temp[minIndex] = tempValue
+				//Swap
+
+			}
+
+			
+
+			//STEP 4: 
+			//TAKE EACH ELEMENT AND CREATE A CARD ELEMENT FOR DISPLAY
+			for (i = 0; i < temp.length; i = i + 1) {
+				d = document.createElement("div")
+				d.innerHTML = createCard(temp[i]["name"],temp[i]["food"])
+				displayON.appendChild(d)	
+				
+			}
+			
+			
+		}
+
+		//THIS FUNCTION IS CALLED WHEN THE ONCE BUTTON IS CLICKED
+		function updateOnce() {
+			userUpdate.once('value',onClick)
+			
+		}
+
+		//SETUP BUTTON FOR UPDATE
+		var onceBTN = document.getElementById("onceBTN")
+		onceBTN.addEventListener("click",updateOnce)
+		
+	
 
 
 </script>
