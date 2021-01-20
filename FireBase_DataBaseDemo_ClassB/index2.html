@@ -6,12 +6,8 @@
  	<!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-	<style>
-		.flex {
-		  display: flex;
-		  flex-wrap: wrap;
-		}
-	</style>  
+	
+  
 </head>
 <body>
 
@@ -149,13 +145,24 @@
 
 			const data = snapshot.val();
 			
-
-			//This will loop through every object
-		
 			d = document.createElement("div")
 			d.innerHTML = createCard(data["name"],data["food"])
 			display.appendChild(d)
 			
+				
+	
+		}
+
+		function onChangeValue(snapshot) {
+
+			const data = snapshot.val();
+			
+			display.innerHTML = ""
+			for (key in data) {
+				d = document.createElement("div")
+				d.innerHTML = createCard(data[key]["name"],data[key]["food"])
+				display.appendChild(d)
+			}
 				
 	
 		}
@@ -166,7 +173,7 @@
 	
 		}
 
-		userUpdate.orderByChild("name").on('child_added', onChange)
+		userUpdate.orderByChild("food").on('child_added', onChange)
 
 		//userUpdate.on('child_changed', onChange)
 
@@ -196,7 +203,7 @@
 			//Grab the values from the snapshot.  This is a list. 
 			const data = snapshot.val();
 			
-
+			console.log(data)
 			//STEP 2: COPY DATA FROM DATABASE COLLECTION INTO 
 			
 			//temp array to hold the data from the database.
@@ -225,7 +232,7 @@
 				for (j = i + 1; j < temp.length; j = j + 1) {
 
 
-					if (temp[j]["name"] < temp[minIndex]["name"]) {
+					if (temp[j]["food"] < temp[minIndex]["food"]) {
 						minIndex = j;
 					}
 
@@ -239,7 +246,7 @@
 
 			}
 
-			
+			console.log(temp)
 
 			//STEP 4: 
 			//TAKE EACH ELEMENT AND CREATE A CARD ELEMENT FOR DISPLAY
