@@ -5,11 +5,21 @@ const logout_nav = document.getElementById("logout_nav")
 const learn_more_nav = document.getElementById("learn_more_nav")
 const elements_nav = document.getElementById("elements_nav")
 
+const homecontent = document.getElementById("home_content")
+console.log(homecontent)
+
 
 var users =["user1","user2","user3","user4"]
 var pwords = ["pword1","pword","pword3","pword4"]
 
+cuser = ""
 
+if (cuser === "") {
+	console.log("NO USER")
+}
+else {
+	console.log(cuser)
+}
 
 
 login_form.addEventListener("submit", (e) => {
@@ -33,6 +43,14 @@ login_form.addEventListener("submit", (e) => {
 
 			if (pwords[i] === password) {
 				valid = true //The user exists in system
+				cuser = users[i]
+				if (cuser === "") {
+						console.log("NO USER")
+				}
+				else {
+					console.log(cuser)
+				}
+
 			}
 		}
 
@@ -45,6 +63,9 @@ login_form.addEventListener("submit", (e) => {
 		logout_nav.style.display = "block" //display the logout_nav button
 		learn_more_nav.style.display = "block"
 		elements_nav.style.display = "block"
+
+		homecontent.style.display = "block"
+
 
 	}
 	else {
@@ -78,6 +99,8 @@ logout_nav.addEventListener("click",(e) => {
 	logout_nav.style.display = "none" //display the logout_nav button
 	learn_more_nav.style.display = "none"
 	elements_nav.style.display = "none"
+	cuser = ""
+	homecontent.style.display = "none"
 });
 
 
