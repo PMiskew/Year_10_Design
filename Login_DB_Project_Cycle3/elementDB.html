@@ -74,6 +74,21 @@
 		//				img holds a link to the image which I will store in the firebase
 		//				backend.  For now I am just putting link and will fill with any
 		//				image
+		function demoIdea(data){
+
+			//A JSON object is best to work with.  However, when data is sent
+			//from firebase it is a string, that has a JSON format.  
+
+			//Given data is a JSON object we can stringify it 
+
+			dataSTR = JSON.stringify(data)
+			console.log(dataSTR)
+			dataOBJ = JSON.parse(dataSTR)
+			console.log("**")
+			console.log(dataOBJ)
+
+		}
+
 
 		var data = 
 			{	
@@ -97,9 +112,8 @@
 					}
 				]
 			}
-	
-		console.log(data)	
-
+		
+		demoIdea(data)
 
 		//Adds one card
 		//elementCards.innerHTML = createCard()
