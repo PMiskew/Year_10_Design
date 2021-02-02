@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- Compiled and minified CSS -->
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+ 
+            
+</head>
+<body style = "background-color: #e3f2fd">
+
+	<nav>
+		<div class="yellow darken-2 nav-wrapper">
+			<a href="#" class="brand-logo center">Elements DB (Y10 DEMO)</a>
+			<ul id="nav-mobile" class="left hide-on-med-and-down">
+				<li><a href="index.html" id = "logout_nav">Logout</a></li>
+				<li><a href="learn_more.html" id = "learn_more_nav">Learn More</a></li>
+				<li><a href="#" id = "elements_nav">Elements</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class = "container">
+		<h1>The Elements</h1>
+
+		<div class="row" id = "elementCards">
+		</div> 		
+	</div>
+
+	<script> 
+
+
+
+		function createCard(name, symbol,fact) {
+
+
+			const card = ` 
+				<div class="col s12 m6 l4">
+					<div class="card small blue-grey darken-1">
+						<div class="card-content white-text">
+							<span class="card-title">${name}: ${symbol} </span>
+							<p>${fact}</p>
+						</div>
+						<div class="card-action">
+							<a href="#">This is a link</a>
+							<a href="#">This is a link</a>
+						</div>
+					</div>
+				</div>
+
+			</div> <!-- END OF ROW --> 	  
+			`
+
+
+			return card
+
+		}
+
+		console.log("TEST")
+	
+		const elementCards = document.getElementById("elementCards")
+
+		//What do I want my data structure to look like?
+		//	
+		//Approach: 	Before doing the database work I am going to make up a sample
+		//			  	JSON which will hold the information for hte elements
+		//				I will do all the coding for this and only once I get it working
+		//				will I connect the database.  This is a way to structure my 
+		//				Criteria C working plan. 
+
+		//				img holds a link to the image which I will store in the firebase
+		//				backend.  For now I am just putting link and will fill with any
+		//				image
+
+		var data = 
+			{	
+				"elements": [
+					{ 
+						"name": "Hydogen",
+						"symbol": "H", 
+						"number": 1, 
+						"atomicMass": 1.007947, 
+						"img": "LINK",
+						"fact": "Hydrogen is the most abundent element in the universe"
+					},
+					{
+						"name": "Helium",
+						"symbol": "He",
+						"number": 2, 
+						"atomicMass": 4.002602, 
+						"img": "LINK",
+						"fact": "Helium is a colourless, tasteless and odorless gas"
+
+					}
+				]
+			}
+	
+		console.log(data)	
+
+
+		//Adds one card
+		//elementCards.innerHTML = createCard()
+		for (i = 0; i < data["elements"].length; i = i + 1) {
+			//This overwrites the HTML inside elementCards so it runs 118 times, 
+			//but erases the content each time
+			//elementCards.innerHTML = createCard()
+			elementCards.innerHTML = elementCards.innerHTML + createCard(data["elements"][i]["name"],data["elements"][i]["symbol"],data["elements"][i]["fact"])
+		}
+
+	
+
+
+
+
+
+	</script>
+</body>
+</html>
