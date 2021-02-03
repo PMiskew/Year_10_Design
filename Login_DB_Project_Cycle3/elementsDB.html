@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- Compiled and minified CSS -->
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+ 
+            
+</head>
+<body style = "background-color: #e3f2fd">
+
+	<nav>
+		<div class="yellow darken-2 nav-wrapper">
+			<a href="#" class="brand-logo center">Elements (Y10 DEMO)</a>
+			<ul id="nav-mobile" class="left hide-on-med-and-down">
+				<li><a href="index.html" id = "logout_nav">Logout</a></li>
+				<li><a href="learn_more.html" id = "learn_more_nav">Learn More</a></li>
+				<li><a href="#" id = "elements_nav">Elements</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class = "container">
+		<h1>The Elements</h1>
+
+		<div class="row" id = "elementCards">
+		</div> 		
+	</div>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+	https://firebase.google.com/docs/web/setup#available-libraries -->
+
+	<script> 
+
+		
+	
+			// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyB85hekpSXg_vDqdRwRE4b0p55STmO0WAY",
+			authDomain: "elemprojyear10c3.firebaseapp.com",
+			databaseURL: "https://elemprojyear10c3-default-rtdb.firebaseio.com",
+			projectId: "elemprojyear10c3",
+			storageBucket: "elemprojyear10c3.appspot.com",
+			messagingSenderId: "319422768568",
+			appId: "1:319422768568:web:d535b497d11a2c480bdb4d"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		
+
+		var database = firebase.database(); //database now has access to firebase database functions
+
+
+		data = "" //hold database data
+		//Before doing any code I have to setup my database
+
+		//Go and do a onetime pull of data
+		
+		database.ref().once('value').then((snapshot) => {
+			
+			console.log(snapshot.val())
+
+			data = snapshot.val();
+
+			const elementCards = document.getElementById("elementCards")
+
+
+			console.log(data["elements"])
+			//Adds one card
+			//elementCards.innerHTML = createCard()
+			for (key in data["element"]) {
+				//This overwrites the HTML inside elementCards so it runs 118 times, 
+				//but erases the content each time
+				//elementCards.innerHTML = createCard()
+				console.log(key)
+				//elementCards.innerHTML = elementCards.innerHTML + createCard(data["elements"][i])
+			}
+
+
+		});
+
+
+
+		function createCard(elemOBJ) {
+
+
+			console.log(elemOBJ)
+			const card = ` 
+				<div class="col s12 m6 l4">
+					<div class="card small blue-grey darken-1">
+						<div class="card-content white-text">
+							<span class="card-title">${elemOBJ["name"]}: ${elemOBJ["symbol"]}</span>
+							<p>${elemOBJ["fact"]}</p>
+						</div>
+						<div class="card-action">
+							<a href="#">This is a link</a>
+							<a href="#">This is a link</a>
+						</div>
+					</div>
+				</div>
+
+			</div> <!-- END OF ROW --> 	  
+			`
+
+
+			return card
+
+		}
+
+	
+	
+
+
+
+
+
+	</script>
+</body>
+</html>
