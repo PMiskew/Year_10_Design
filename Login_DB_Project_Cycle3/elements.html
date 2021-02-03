@@ -32,6 +32,46 @@
 
 	<script> 
 
+		var data = 
+			{	
+				"elements": [
+					{ 
+						"name": "Hydogen",
+						"symbol": "H", 
+						"number": 1, 
+						"atomicMass": 1.007947, 
+						"img": "LINK",
+						"fact": "Hydrogen is the most abundent element in the universe"
+					},
+					{
+						"name": "Helium",
+						"symbol": "He",
+						"number": 2, 
+						"atomicMass": 4.002602, 
+						"img": "LINK",
+						"fact": "Helium is a colourless, tasteless and odorless gas"
+
+					},
+					{
+						"name": "Lithium",
+						"symbol": "Li",
+						"number": 3, 
+						"atomicMass": 6.941, 
+						"img": "LINK",
+						"fact": "Used to treat major depressive disorders."
+
+					},
+					{
+						"name": "Beryllium",
+						"symbol": "Be",
+						"number": 4, 
+						"atomicMass": 9.012182, 
+						"img": "LINK",
+						"fact": "beryllium is used to make cell phones, missiles and aircrafts.."
+
+					}
+				]
+			}
 
 
 		function createCard(num) {
@@ -64,8 +104,9 @@
 		console.log("TEST")
 	
 		const elementCards = document.getElementById("elementCards")
+		
 
-		var elements = {name: "Hydongen", number}
+
 		//Adds one card
 		//elementCards.innerHTML = createCard()
 		for (i = 1; i <= 118; i = i + 1) {
