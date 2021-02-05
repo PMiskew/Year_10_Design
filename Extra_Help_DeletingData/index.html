@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+    Upper School Basketball: Official Website
+	</title>
+
+  <link href="scripts/stylesheet.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+
+<!--
+LANDING PAGE
+-->
+	
+  <div id = "landing" class = "container">
+		<center><br><br><br>
+		<h2>Login to Upper School Basketball: Official Website</h2><br><br>
+		<img src="images/UpperCanada.png" height="400" width="450">
+		<br><br><br><br>
+		<a href = "#modal-login" class ="btn-large modal-trigger red darken-2">LOGIN</a>
+  </div>
+
+  <div id = "modal-login" class = "modal">
+
+    <div class = "modal-content">
+      <h4>Login</h4><br/>
+        <form id = "login-form">
+
+          <div class = "input-field">
+            <input type = "email" id = "login-email" autocomplete="" required/>
+            <label for = "login-email">Email Address</label>
+          </div>
+
+          <div class = "input-field">
+            <input type = "password" id="login-password" autocomplete="" required/>
+            <label for = "login-password">Password</label>
+          </div>
+
+          <button class = "btn red darken-2 z-depth-0">Login</button>
+
+        </form>
+    </div>
+  </div>
+
+<!--
+TEAM INFO PAGE
+-->
+
+  <div id = "home" display = "none">
+    <nav>
+      <div class="nav-wrapper red darken-2">
+
+        <a class="brand-logo">&nbsp; Upper School Basketball: Official Website</a>
+
+        <ul class="right hide-on-med-and-down">
+          <li class="active"><a onclick="teamInfo()" id="teaminfo_btn">Team Info</a></li>
+          <li><a onclick="drills()" id="drills_btn">Drills</a></li>
+          <li><a onclick="discussionBoard()" id="discussionboard_btn">Discussion Board</a></li>
+          <li><a onclick="logout()" class="waves-effect waves-light btn white" id="logout_btn" style="color:black;">Log Out</a></li>
+        </ul>
+
+      </div>
+    </nav>
+
+    <center>
+
+      <h2>Team Information</h2>
+
+      <img src="images/UCCGym.jpg" id="boxshadow" width="800" height="500">
+
+      <br><br><br>
+
+      <div class="divider"></div>
+
+      <br>
+
+      <h5>Click on a bar to show the information for a specific team:</h5>
+
+      <br>
+
+    </center>
+
+    <div class = "container">
+
+      <center>
+
+        <ul class="collapsible" id = "collapsibleConstant"></ul>
+
+      </center> 
+
+    </div>
+
+  </div>
+
+<!--
+DRILLS PAGE
+-->
+
+  <div id = "drills" display = "none">
+    <nav>
+      <div class="nav-wrapper red darken-2">
+        <a class="brand-logo">&nbsp; Upper School Basketball: Official Website</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a onclick="teamInfo()" id="teaminfo_btn">Team Info</a></li>
+          <li class="active"><a onclick="drills()" id="drills_btn">Drills</a></li>
+          <li><a onclick="discussionBoard()" id="discussionboard_btn">Discussion Board</a></li>
+          <li><a onclick="logout()" class="waves-effect waves-light btn white" id="logout_btn" style="color:black;">Log Out</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <center>
+
+        <h2>Drills</h2>
+
+        <img src="images/Drills.jpg" id="boxshadow" width="800" height="500">
+
+        <br><br><br>
+
+        <div class="divider"></div>
+
+        <br>
+
+        <h5>Click on a bar to show the drills for a specific skill:</h5>
+
+        <br>
+
+        <div class = "container">
+
+          <ul class="collapsible">
+
+            <li>
+              <div class="collapsible-header orange darken-4"><b style="color:white;">Passing</b></div>
+              <div class="collapsible-body">
+
+                <h4>Passing Drills</h4>
+
+                <div class="divider"></div>
+
+                <h5>Monkey in the Middle</h5>
+
+                <br>
+
+                <div class="row">
+                  <div class="col s12 m6">
+                    <img src="images/Monkey.gif" height="250" width="300">
+                  </div>
+
+                  <div class="col s12 m6"><br>
+
+                    <h6>Two players are on offense. One player in the middle is the monkey and is on defense. Offensive players pass the ball back and forth. They use fakes to get the ball past the defender. No lob passes are allowed.</h6>
+
+                    <br>
+
+                    <h6>Wait for the defender to recover to the offense before throwing the next pass. When the defender tips a pass, the passer goes to be the monkey in the middle.</h6>
+
+                  </div>
+
+                </div>
+
+                <div class="divider"></div>
+
+                <h5>Wall Passing</h5>
+
+                <br>
+
+                <div class="row">
+                  <div class="col s12 m6">
+                    <iframe src="https://www.youtube.com/embed/O1fV8QagnVo" height="270" width="300"></iframe>
+                  </div>
+
+                  <div class="col s12 m6">
+
+                    <h6>Wall passing is a great way to improve hand-eye coordination and athletic strength while developing passing, catching, and ball handling skills.</h6>
+
+                    <br>
+
+                    <h6>In the video, there are 3 progressions:</h6><br>
+
+                    <ul>
+                      <li>Progression 1: Overhead Wall Pass - 25 Reps</li><br>
+                      <li>Progression 2: 1 Handling Alternating Wall Pass - 20 Reps</li><br>
+                      <li>Progression 3: 1 Hand Wall Pass - 20 Reps With Each Hand</li>
+                    </ul>
+
+                  </div>
+
+              </div>      
+            </li>
+
+            <li>
+              <div class="collapsible-header orange darken-4"><b style="color:white;">Dribbling</b></div>
+              <div class="collapsible-body">
+
+                <h4>Dribbling Drills</h4>
+
+                <div class="divider"></div>
+
+                <h5>Two Up, Two Back</h5>
+
+                <div class="row">
+
+                  <div class="col s12 m4">
+                    <img src="images/TwoUpTwoBack1.gif">
+                    <h6>Step 1: Set a chair or cone about 21 feet from the basket, and take 2 hard dribbles at the chair.</h6>
+                  </div>
+
+                  <div class="col s12 m4">
+                    <img src="images/TwoUpTwoBack2.gif">
+                    <h6>Step 2: When reaching the chair, take 2 backup dribbles.</h6>
+                  </div>
+
+                   <div class="col s12 m4">
+                    <img src="images/TwoUpTwoBack3.gif">
+                    <h6>Step 3: Use a change of direction dribble (cross over, inside out, etc). Then push ahead into a 1 dribble lay-up or pull-up jumpshot.</h6>
+                  </div>
+
+                </div>
+
+                <h6>This drill practices ballhandling in regard to change of direction. It can be done  individually or with teammates.</h6>
+
+                <br>
+
+                <div class="divider"></div>
+
+                <h5>Dribble Screens</h5>
+
+                <div class="row">
+
+                <div class="col s12 m4">
+                    <img src="images/DribbleScreen1.gif">
+                    <h6>Step 1: Set a chair 20 feet out at the foul line extended. Start at mid-court with the ball.</h6>
+                  </div>
+
+                  <div class="col s12 m4">
+                    <img src="images/DribbleScreen2.gif">
+                    <h6>Step 2: Dribble and take the ball below the chair.</h6>
+                  </div>
+
+                   <div class="col s12 m4">
+                    <img src="images/DribbleScreen3.gif">
+                    <h6>Step 3: Once below the chair, make a change dribble and come off it, simulating a ball screen. You can now finish with a shot or take it to the rim.</h6>
+                  </div>
+
+                </div>
+
+                <h6>This drill practices coming off ball screens from the wing. It can be done individually or with teammates.</h6>
+
+              </div>   
+
+            </li>
+
+            <li>
+             <div class="collapsible-header orange darken-4"><b style="color:white;">Shooting</b></div>
+              <div class="collapsible-body">
+
+                <h4>Shooting Drills</h4>
+
+                <div class="divider"></div>
+
+                <h5>Form Shooting</h5>
+
+                <br>
+
+                <div class="row">
+                  <div class="col s12 m6">
+                    <iframe src="https://www.youtube.com/embed/Xznq21bL4Hg" height="270" width="300"></iframe>
+                  </div>
+
+                  <div class="col s12 m6"><br>
+
+                    <h6>This drill reinforces good technique of the "release" portion of one's shot. Feet shoulder width apart, make an L with your shooting arm and push the ball up and out with one hand.</h6>
+
+                    <br>
+
+                    <h6>Focus on pushing the ball through the fingers. The index or middle finger should be pointing at the hoop with the follow through. The video to the left demonstrates several reps of the drill.</h6>
+
+                  </div>
+
+                </div>
+
+                <div class="divider"></div>
+
+                <h5>Chair Curl</h5>
+
+                <h6>Setup: Place a chair, foul line extended, and put a ball on the chair. Start at the side block on the same side as the chair.</h6>
+
+                <br>
+
+                <div class="row">
+
+                  <div class="col s12 m4">
+                    <img src="images/ChairCurl1.gif">
+                    <h6>Step 1: Sprint and curl around the chair (it can be from the baseline or over the top), pick up the ball and take a jump shot.</h6>
+                  </div>
+
+                  <div class="col s12 m4">
+                    <img src="images/ChairCurl2.gif">
+                    <h6>Step 2: After taking the jump shot, chase down the rebound (put it in if the jumper was missed - always end on a make).</h6>
+                  </div>
+
+                   <div class="col s12 m4">
+                    <img src="images/ChairCurl3.gif">
+                    <h6>Step 3: make 1 or 2 change dribble moves back around the chair and take a 1 dribble jump shot.</h6>
+                  </div>
+                </div>
+
+                <h6>This drill simulates coming off of a screen for a shot. It combines shooting, ballhandling and high intensity change in direction.</h6>
+
+              </div>      
+            </li>
+          </ul>
+        </div>
+    </center>
+  </div>
+
+<!--
+DISCUSSION BOARD PAGE
+-->
+
+  <div id = "discussionboard" display = "none">
+
+    <nav>
+      <div class="nav-wrapper red darken-2">
+        <a class="brand-logo">&nbsp; Upper School Basketball: Official Website</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a onclick="teamInfo()" id="teaminfo_btn">Team Info</a></li>
+          <li><a onclick="drills()" id="drills_btn">Drills</a></li>
+          <li class="active"><a onclick="discussionBoard()" id="discussionboard_btn">Discussion Board</a></li>
+          <li><a onclick="logout()" class="waves-effect waves-light btn white" id="logout_btn" style="color:black;">Log Out</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <center>
+
+      <h2>Discussion Board</h2>
+
+      <img src="images/DiscussionBoard.png" id="boxshadow" width="800" height="500">
+
+      <br><br><br>
+
+      <div class="divider"></div>
+
+      <br>
+
+      <a href = "#modal-posting" class ="btn-large modal-trigger red darken-2">Post to Discussion Board</a>
+
+      <div class = "modal" id = "modal-posting">
+
+      <div class = "modal-content">
+        <h4>Post to Message Board</h4><br/>       
+        <form>
+
+          <div class = "input-field">
+
+            <select id="opbox">
+              <option value="" disabled selected>Select A Team</option>
+              <option value="U14" >U14</option>
+              <option value="U16B" >U16B</option>
+              <option value="U16A" >U16A</option>
+              <option value="Varsity">Varsity</option>
+            </select>
+
+          </div>
+
+          <div class = "input-field">
+
+            <input placeholder="Message" id="message" type="text" class="validate">
+
+          </div>
+
+          <a id = "enter_dataBTN" class="modal-close red darken-2 waves-effect waves-light btn">Submit</a>
+
+        </form>
+      </div>
+    </div>
+
+    <br><br>
+
+    <h5>The messages are organized from oldest to newest:</h5>
+
+    <br>
+
+    </center>
+
+    <div class = "container">
+
+      <div id = "live" class = "row"></div>
+
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+  <script src="scripts/index.js"></script>
+  <script src="scripts/init.js"></script>
+
+</body>
+</html>

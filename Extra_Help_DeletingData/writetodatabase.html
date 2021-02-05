@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	   <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+
+
+
+	<div>
+
+		
+
+
+
+</body>
+</html>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+
+<script>
+
+// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyCYZSqZmt_RTMPqCVHCUhngnESlGAk_f4o",
+			authDomain: "extra-help-deletingdata.firebaseapp.com",
+			databaseURL: "https://extra-help-deletingdata-default-rtdb.firebaseio.com",
+			projectId: "extra-help-deletingdata",
+			storageBucket: "extra-help-deletingdata.appspot.com",
+			messagingSenderId: "138003468209",
+			appId: "1:138003468209:web:b31c08a9358fe2f7b8b790"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+
+		database = firebase.database()
+
+	var posts = [
+		{
+			username: "t1",
+			teamname: "team1",
+			message: "message"
+		},
+		{
+			username: "t1",
+			teamname: "team1",
+			message: "message"
+		},
+		{
+			username: "t1",
+			teamname: "team1",
+			message: "message"
+		},
+		{
+			username: "t1",
+			teamname: "team1",
+			message: "message"
+		}
+		
+		
+		
+
+		]
+
+	
+
+
+	/*
+	database.ref().push({
+   		users
+   		//does something that accesses and updates name from the database
+   		
+  	}).then((result) => {
+  		console.log("DONE")
+  		//does 
+  	});
+  	*/
+
+		
+	database.ref().set({
+   		posts
+   		//does something that accesses and updates name from the database
+   		
+  	}).then((result) => {
+  		console.log("DONE")
+  		//does 
+  	});
+
+
+	
+	
+  	
+</script>
+
