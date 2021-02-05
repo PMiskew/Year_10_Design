@@ -57,6 +57,30 @@
 	</div>
 
 
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-database.js"></script>
+
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+	 https://firebase.google.com/docs/web/setup#available-libraries -->
+
+	<script>
+	// Your web app's Firebase configuration
+	var firebaseConfig = {
+		apiKey: "AIzaSyDxhj5KzeZKKebD5mzIdU7klWk1TFqdjVc",
+		authDomain: "elements-demo-8a627.firebaseapp.com",
+		databaseURL: "https://elements-demo-8a627-default-rtdb.firebaseio.com",
+		projectId: "elements-demo-8a627",
+		storageBucket: "elements-demo-8a627.appspot.com",
+		messagingSenderId: "484222946103",
+		appId: "1:484222946103:web:c36e2007bd1ba9ebc2a8b2"
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+
+	database = firebase.database();
+	</script>
 
 
 	      
@@ -75,7 +99,7 @@
 
     </script> 
 
-    <script src = "auth.js"></script>    
+    <script src = "auth_DB.js"></script>    
 
 
 </body>

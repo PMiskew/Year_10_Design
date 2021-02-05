@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	   <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+
+
+
+	<div>
+
+		
+
+
+
+</body>
+</html>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+
+<script>
+
+// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyDxhj5KzeZKKebD5mzIdU7klWk1TFqdjVc",
+			authDomain: "elements-demo-8a627.firebaseapp.com",
+			databaseURL: "https://elements-demo-8a627-default-rtdb.firebaseio.com",
+			projectId: "elements-demo-8a627",
+			storageBucket: "elements-demo-8a627.appspot.com",
+			messagingSenderId: "484222946103",
+			appId: "1:484222946103:web:c36e2007bd1ba9ebc2a8b2"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+
+		database = firebase.database()
+
+	var users = [
+		{
+			"uname": "user1",
+			"pword": "UCC123",
+			"description": "I am a new student at school"
+		},
+		{
+			"uname": "user2",
+			"pword": "UCC321",
+			"description": "I am a new student as well"
+		}]
+
+	
+
+
+	/*
+	database.ref().push({
+   		users
+   		//does something that accesses and updates name from the database
+   		
+  	}).then((result) => {
+  		console.log("DONE")
+  		//does 
+  	});
+  	*/
+
+		
+	database.ref().set({
+   		users
+   		//does something that accesses and updates name from the database
+   		
+  	}).then((result) => {
+  		console.log("DONE")
+  		//does 
+  	});
+
+
+	
+	
+  	
+</script>
+

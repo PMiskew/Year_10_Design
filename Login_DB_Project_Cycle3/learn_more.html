@@ -21,6 +21,65 @@
 			</ul>
 		</div>
 	</nav>
+	<br/>
+	<div class = "container">
+
+
+		<img id = "imageFB" src = ""> 
+		<img id = "imageLOC" src = "images/2_Helium.jpg">
+		<img id = "imageGIT" src = 
+		<br/>
+
+
+	</div>
+
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-storage.js"></script>
+
+
+
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyDxhj5KzeZKKebD5mzIdU7klWk1TFqdjVc",
+			authDomain: "elements-demo-8a627.firebaseapp.com",
+			databaseURL: "https://elements-demo-8a627-default-rtdb.firebaseio.com",
+			projectId: "elements-demo-8a627",
+			storageBucket: "elements-demo-8a627.appspot.com",
+			messagingSenderId: "484222946103",
+			appId: "1:484222946103:web:c36e2007bd1ba9ebc2a8b2"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+
+		storage = firebase.storage();
+
+		const img = document.getElementById("imageFB")
+
+		var storageRef = storage.ref(""); //references the storage bucket of my firebase system
+		
+		storageRef.child('images/1_Hydrogen.jpg').getDownloadURL().then(function(url) {
+
+			img.src = url;
+
+		});
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+
 
 </body>
 </html>

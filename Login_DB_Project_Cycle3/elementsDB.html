@@ -64,7 +64,7 @@
 
 		//Go and do a onetime pull of data
 		
-		database.ref().once('value').then((snapshot) => {
+		database.ref().on('value').then((snapshot) => {
 			
 			console.log(snapshot.val())
 
