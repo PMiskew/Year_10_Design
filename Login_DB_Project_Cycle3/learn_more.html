@@ -22,12 +22,13 @@
 		</div>
 	</nav>
 	<br/>
+	
+
 	<div class = "container">
 
 
 		<img id = "imageFB" src = ""> 
 		<img id = "imageLOC" src = "images/2_Helium.jpg">
-		<img id = "imageGIT" src = 
 		<br/>
 
 
@@ -36,7 +37,9 @@
 
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+
 	<script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-storage.js"></script>
+
 
 
 
@@ -54,12 +57,15 @@
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
 
-		storage = firebase.storage();
-
-		const img = document.getElementById("imageFB")
+		storage = firebase.storage() //accesses the storage section
+	
+		const img = document.getElementById("imageFB") //grabs element from page
+		
 
 		var storageRef = storage.ref(""); //references the storage bucket of my firebase system
 		
+		//when I get the storage URL it takes a moment - so I have to use a .then
+		//remember a .then runs after the command that called it is done
 		storageRef.child('images/1_Hydrogen.jpg').getDownloadURL().then(function(url) {
 
 			img.src = url;

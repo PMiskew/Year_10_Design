@@ -20,9 +20,10 @@ passwords = []
 
 cuser = ""
 
+/*
 //ONCE: Does the pull once when called.  If you add a new user and change users you then need to run this
 //call again to update the users data
-/*
+
 database.ref('/users/').once('value').then((snapshot) => {
 			
 			//option 1: Make a list of objects that hold both username and password
@@ -42,7 +43,8 @@ database.ref('/users/').once('value').then((snapshot) => {
 
 			//RECOMMEND OPTION 1
 });
-*/
+
+//*/
 
 //ON: Creates a connection with the page this will run once on the load of a page and then automatically
 //		run again when the database changes
@@ -66,6 +68,7 @@ database.ref('/users/').on('value',(snapshot) => {
 });
 
 
+//*/
 
 login_form.addEventListener("submit", (e) => {
 
