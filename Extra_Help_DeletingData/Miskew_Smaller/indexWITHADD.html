@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+
+	   <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+
+	
+</head>
+<body>
+	<div>
+		<br/>
+		<a class="modal-trigger waves-effect waves-light btn yellow darken-2" href="#post_modal" id = "addBTN">ADD DATA</a>
+
+
+	</div>
+
+
+	<!-- Modal Structure -->
+	<div id="post_modal" class="modal">
+		<div class="modal-content">
+			<form id = "post_form">
+
+				<div class="input-field">
+					<input type="text" id="teamname" autocomplete="" required />
+					<label for="teamname">Team Name</label>
+				</div>
+
+				<div class="input-field">
+					<input type="text" id="message" autocomplete="" required />
+					<label for="message">Message</label>
+				</div>
+
+				<button class ="btn teal darken-2 z-depth-0">ADD DATA</button>
+
+
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+		</div>
+	</div>
+
+	<div class = "row container" id = "carddisplay">
+
+	</div>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+
+	<script>
+
+
+
+		var firebaseConfig = {
+
+			apiKey: "AIzaSyCYZSqZmt_RTMPqCVHCUhngnESlGAk_f4o",
+			authDomain: "extra-help-deletingdata.firebaseapp.com",
+			databaseURL: "https://extra-help-deletingdata-default-rtdb.firebaseio.com",
+			projectId: "extra-help-deletingdata",
+			storageBucket: "extra-help-deletingdata.appspot.com",
+			messagingSenderId: "138003468209",
+			appId: "1:138003468209:web:b31c08a9358fe2f7b8b790"
+		    
+		};
+
+		firebase.initializeApp(firebaseConfig);
+		database = firebase.database()
+
+		addBTN = document.getElementById("addBTN")
+
+		uname = "CURRENT USER"
+
+
+		function deleteElement(e) {
+			console.log(e)
+		}
+		function createCard(data,key) {
+
+			const card = `<div class="col s12">
+							<div class="card small orange darken-4">
+								<div class="card-content white-text">
+									<span class="card-title"><h4>${data["username"]}</h4></span>
+									<h5>${data["username"]}</h5>
+									<p>Message: ${data["message"]}</p>
+									<br>
+									<a class="waves-effect waves-light btn white" id = ${key} name = ${key} style="color:black;">Delete</a>
+								</div>
+							</div>
+						</div>
+					`
+
+			return card
+	}
+            
+
+	const carddisplay = document.getElementById("carddisplay")
+	const post_form = document.getElementById("post_form")
+
+    cards = []
+    keys = []
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+    	options = {}
+    	var elems = document.querySelectorAll('.modal');
+    	var instances = M.Modal.init(elems, options);
+	});
+
+
+    function deleteElement() {
+    	//This is the implied object, that is who called the function
+    	
+    	console.log(this.id) 
+    	div = document.getElementById(this.id+"c")
+    	div.remove()
+
+    	ref = database.ref(/posts/+this.id)
+    	ref.remove();
+    	
+    	
+
+
+    }
+
+	database.ref('posts').on("child_added", (snapshot) => {
+
+		data = snapshot.val()//gets the data
+		key = snapshot.key //gets the key
+		//console.log(key)
+		cards.push(data)
+		keys.push
+
+		d = document.createElement("div")
+		d.id = key+"c"
+   
+		d.innerHTML = createCard(data,key)
+
+		carddisplay.appendChild(d)
+
+		btn = document.getElementById(key)
+		btn.onclick = deleteElement;
+		
+
+	});
+
+	post_form.addEventListener("submit", (e) => {
+		e.preventDefault()
+
+		teamname = post_form["teamname"].value
+		message = post_form["message"].value
+
+		postData = {
+			message: message,
+			teamname: teamname,
+			username: uname
+		}
+  		newPostKey = firebase.database().ref().child('posts').push().key;
+
+  		var updates = {};
+
+  		updates['/posts/'+newPostKey] = postData
+		database.ref().update(updates)
+
+		const modal = document.querySelector('#post_modal'); 
+		M.Modal.getInstance(modal).close();
+		post_form.reset()
+
+		console.log("test")
+
+	})
+
+
+
+
+	</script>
+</body>
+</html>
