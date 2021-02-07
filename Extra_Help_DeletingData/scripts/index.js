@@ -232,7 +232,7 @@ for (i = 0; i < 4; i = i + 1) {
 
 var firebaseConfig = {
 
-      apiKey: "AIzaSyCYZSqZmt_RTMPqCVHCUhngnESlGAk_f4o",
+    apiKey: "AIzaSyCYZSqZmt_RTMPqCVHCUhngnESlGAk_f4o",
     authDomain: "extra-help-deletingdata.firebaseapp.com",
     databaseURL: "https://extra-help-deletingdata-default-rtdb.firebaseio.com",
     projectId: "extra-help-deletingdata",
@@ -269,7 +269,7 @@ function createCard(username,teamname,message,newPostKey) {
                                 <h5>${teamname}</h5>
                                 <p>Message: ${message}</p>
                                 <br>
-                                <a class="waves-effect waves-light btn white" name = ${newPostKey} style="color:black;" onclick = "deleteData()">Delete</a>
+                                <a class="waves-effect waves-light btn white" id = ${newPostKey} name = ${newPostKey} style="color:black;" onclick = "deleteData()">Delete</a>
                             </div>
                         </div>
                     </div>`
@@ -293,6 +293,8 @@ function writePostData(userId, username, teamname, message) {
 
 }
 
+   
+var discussionOBJ = []   
 function enterData() {
 
     username = uName
@@ -319,8 +321,9 @@ function enterData() {
         var newPostKey = database.ref().child('posts').push().key;
         console.log(newPostKey)
 
+        discussionOBJ.push(newPostKey)
         writePostData(newPostKey,username,teamname,message,newPostKey)
-
+        console.log(discussionOBJ)
     }
             
 }
@@ -329,11 +332,11 @@ submitBTN.addEventListener("click",enterData)
 
 
 /******************* ON COMMAND *******************/
-        
+  
 function onChange(snapshot) {
 
     const data = snapshot.val();
-        
+    
     d = document.createElement("div")
     d.innerHTML = createCard(data["username"],data["teamname"],data["message"])
     display.appendChild(d)
