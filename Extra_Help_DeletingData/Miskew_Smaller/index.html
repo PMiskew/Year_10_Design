@@ -19,6 +19,7 @@
 	<div class = "row container" id = "carddisplay">
 
 	</div>
+
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
 
@@ -38,12 +39,11 @@
 		    
 		};
 
-		firebase.initializeApp(firebaseConfig);
-		database = firebase.database()
+		firebase.initializeApp(firebaseConfig); //initalize config
+		database = firebase.database() //link to database
 
-		function deleteElement(e) {
-			console.log(e)
-		}
+
+
 		function createCard(data,key) {
 
 			const card = `<div class="col s12">
@@ -60,7 +60,7 @@
 					`
 
 			return card
-	}
+		}
             
 
 	const carddisplay = document.getElementById("carddisplay")
@@ -69,11 +69,15 @@
 
     function deleteElement() {
     	//This is the implied object, that is who called the function
-    	
+    	//What 'this' refers to is the button that was clicked
     	console.log(this.id) 
-    	div = document.getElementById(this.id+"c")
-    	div.remove()
 
+    	//THIS IS FRONT END
+    	div = document.getElementById(this.id+"c") //get the card the button is in
+    	div.remove() //removes it from the page
+
+    	//Problem: I want to remove the element from the database but I don't have the key
+    	//
     	ref = database.ref(/posts/+this.id)
     	ref.remove();
     	
@@ -83,21 +87,24 @@
     }
 
 	database.ref('posts').on("child_added", (snapshot) => {
-
+		console.log("Run")
 		data = snapshot.val()//gets the data
 		key = snapshot.key //gets the key
 		//console.log(key)
-		cards.push(data)
-		keys.push
+		/*
+		My inititial thinking was to create two parallel lists. 
+		*/
+		cards.push(data) //I don't use this, but try to add the data to a lists
+		keys.push //I don't use this, but it pushes the key to another list
 
-		d = document.createElement("div")
-		d.id = key+"c"
+		d = document.createElement("div") //create a div to store the card
+		d.id = key+"c" //I give the div an id which is the key + c
    
-		d.innerHTML = createCard(data,key)
+		d.innerHTML = createCard(data,key) //I set the innerHTML of the div to the card that is generated with object
 
-		carddisplay.appendChild(d)
+		carddisplay.appendChild(d) //I add the new div to the div section "carddisplay"
 
-		btn = document.getElementById(key)
+		btn = document.getElementById(key) //binds a function to he button
 		btn.onclick = deleteElement;
 		
 

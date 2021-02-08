@@ -15,6 +15,15 @@
 	
 </head>
 <body>
+
+	<!--
+
+		We added a button and linked a modal to it. 
+		We set up the modal to have an input for teamname and message
+
+		The modal is a copy of the structure from our fake login
+	-->
+
 	<div>
 		<br/>
 		<a class="modal-trigger waves-effect waves-light btn yellow darken-2" href="#post_modal" id = "addBTN">ADD DATA</a>
@@ -48,9 +57,15 @@
 		</div>
 	</div>
 
+	
+	<!-- 
+		This is the div from the original index file
+	-->
 	<div class = "row container" id = "carddisplay">
 
 	</div>
+
+
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
 
@@ -78,9 +93,6 @@
 		uname = "CURRENT USER"
 
 
-		function deleteElement(e) {
-			console.log(e)
-		}
 		function createCard(data,key) {
 
 			const card = `<div class="col s12">
@@ -101,12 +113,15 @@
             
 
 	const carddisplay = document.getElementById("carddisplay")
+	//get the post_form becuase I want to run a function on submit
 	const post_form = document.getElementById("post_form")
 
+	//We don't actually use these - Mr. Miskew attempt 1 thought we would need them
     cards = []
     keys = []
 
 
+    //ADDED: Remember we are using a modal now and I need to initalize it. 
     document.addEventListener('DOMContentLoaded', function() {
     	options = {}
     	var elems = document.querySelectorAll('.modal');
@@ -114,60 +129,99 @@
 	});
 
 
+
     function deleteElement() {
     	//This is the implied object, that is who called the function
     	
     	console.log(this.id) 
+
+    	//deletes from page
     	div = document.getElementById(this.id+"c")
     	div.remove()
 
-    	ref = database.ref(/posts/+this.id)
-    	ref.remove();
+    	//deletes from database
+    	ref = database.ref(/posts/+this.id) //points at the objec tin the dtaabase
+    	ref.remove(); //then I remove it
     	
     	
 
 
     }
 
+    function doThis() {
+
+    	console.log("DOING IT!")
+    }
+    
 	database.ref('posts').on("child_added", (snapshot) => {
 
 		data = snapshot.val()//gets the data
 		key = snapshot.key //gets the key
 		//console.log(key)
-		cards.push(data)
-		keys.push
+		cards.push(data) //pointless line of code
+		keys.push //pointless line of code
 
 		d = document.createElement("div")
+		//I give the div the id key +"c" - The card and the button have the key as 
+		//part of the id.  So I can take the id of the button and add a c to it then use
+		//this new id to find the card and remove it from the page. 
 		d.id = key+"c"
-   
+   		d.onclick = doThis()
 		d.innerHTML = createCard(data,key)
 
 		carddisplay.appendChild(d)
 
+		//Now I need to give the button a listener
 		btn = document.getElementById(key)
+		//Why did I use the onclick attribute?  
+		// This is because that the implied object is include in the onclick
+		// meaning I can access the specific button 
 		btn.onclick = deleteElement;
 		
 
 	});
 
+
+	/*
+	I bind an event to the post_form - the event is submit
+	
+	The function automatically takes the form as a parameter and that is the e
+
+
+
+	*/
+
+
+
 	post_form.addEventListener("submit", (e) => {
+
+		//Forms reset the page meaning the page reloadss
+		//I don't want that so I can use this instance function called preventDefault()
+		//which stops the page from reloading
 		e.preventDefault()
 
+		//This accesses the fields from the form
 		teamname = post_form["teamname"].value
 		message = post_form["message"].value
 
+		//Generates an object that based on teh fields and the current user
+		//I will push this object to the database. 
 		postData = {
 			message: message,
 			teamname: teamname,
 			username: uname
 		}
-  		newPostKey = firebase.database().ref().child('posts').push().key;
+
+		//Generate a new key for the object. 
+  		newPostKey =	database.ref().child('posts').push().key;
 
   		var updates = {};
 
+  		//Directly from Firebase documentation
   		updates['/posts/'+newPostKey] = postData
 		database.ref().update(updates)
 
+		//By stopping the page from reloading I need to then manually close the modal. 
 		const modal = document.querySelector('#post_modal'); 
 		M.Modal.getInstance(modal).close();
 		post_form.reset()

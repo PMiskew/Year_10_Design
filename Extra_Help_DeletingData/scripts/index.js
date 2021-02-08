@@ -262,6 +262,7 @@ var postsUpdate = database.ref('posts')
 
 function createCard(username,teamname,message,newPostKey) {
 
+
     const card = `<div class="col s12">
                         <div class="card small orange darken-4">
                             <div class="card-content white-text">
@@ -336,9 +337,9 @@ submitBTN.addEventListener("click",enterData)
 function onChange(snapshot) {
 
     const data = snapshot.val();
-    
+    console.log(snapshot.key)
     d = document.createElement("div")
-    d.innerHTML = createCard(data["username"],data["teamname"],data["message"])
+    d.innerHTML = createCard(data["username"],data["teamname"],data["message"],snapshot.key)
     display.appendChild(d)
     
             
